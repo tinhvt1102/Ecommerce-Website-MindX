@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    padding: 20px;
+
+}
+.item{
+    min-height: 50px;
+    border: 2px solid gray;
+    background-color: goldenrod;
+}
+.container{
+    display: grid;
+    height: 80vh;
+    grid-template-columns: repeat(3,1fr);  
+     /* grid-auto-rows: minmax(60px,auto);  */
+    /* grid-template-rows: 100px 1fr 1fr 100px ; */
+    /* grid-template-columns: 1fr 1fr 1fr; chia ra 3 phần bằng nhau */
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas: 
+    "header header header"
+    "sidebar content content"
+    "sidebar comment comment"
+    "footer footer footer";
+    column-gap: 10px;
+    row-gap: 10px;
+    background: white;
+
+}
+.item-1{
+    grid-area: header;
+}
+.item-2{
+    grid-area: sidebar;
+}
+.item-3{
+    grid-area: content;
+}
+.item-5{
+    grid-column: 2/4;
+    grid-row: 2/4;
+    grid-area: footer;
+}
+.item-4{
+    grid-row: 2/5;
+    grid-area: comment;
+}
+
