@@ -69,11 +69,11 @@ function initHeaderLogic() {
 // Khi trang load xong
 document.addEventListener("DOMContentLoaded", function () {
     // Load Header và truyền hàm initHeaderLogic vào để chạy sau cùng
-    loadHTML("header.html", "header-placeholder", initHeaderLogic);
+    loadHTML("/reuseable/header.html", "header-placeholder", initHeaderLogic);
     
-    loadHTML("footer.html", "footer-placeholder");
+    loadHTML("/reuseable/footer.html", "footer-placeholder");
 
-    if (window.location.pathname.includes("signup.html")) {
+    if (window.location.pathname.includes("../signup-feature/signup.html")) {
         // Logic cho trang signup
     }
 });
