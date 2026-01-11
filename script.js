@@ -33,14 +33,14 @@ function loadHTML(file, elementId, callback) {
         .then(data => {
             document.getElementById(elementId).innerHTML = data;
             // Nếu có hàm callback thì chạy nó sau khi HTML đã hiện ra
-            if (callback) callback(); 
+            if (callback) callback();
         })
         .catch(error => console.error("Lỗi load HTML:", error));
 }
 
 function initHeaderLogic() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    
+
     // Lấy các phần tử cần điều khiển (đảm bảo id/class này có trong header.html)
     const userContainer = document.querySelector('.user-container');
     const signUpLink = document.querySelector('.nav-links a[href="signup.html"]'); // Giả sử nút Sign Up là link này
@@ -70,7 +70,7 @@ function initHeaderLogic() {
 document.addEventListener("DOMContentLoaded", function () {
     // Load Header và truyền hàm initHeaderLogic vào để chạy sau cùng
     loadHTML("/reuseable/header.html", "header-placeholder", initHeaderLogic);
-    
+
     loadHTML("/reuseable/footer.html", "footer-placeholder");
 
     if (window.location.pathname.includes("../signup-feature/signup.html")) {
@@ -89,7 +89,7 @@ const btnRight = document.querySelector('.right');
 // 3. Xử lý khi bấm nút Right (Tiến tới)
 btnRight.addEventListener('click', () => {
     // Cuộn sang phải một khoảng bằng độ rộng của 1 card (270px) + gap (30px)
-    productContainer.scrollLeft += 300; 
+    productContainer.scrollLeft += 300;
 });
 
 // 4. Xử lý khi bấm nút Left (Lùi lại)
@@ -110,19 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
         viewAllBtn.addEventListener('click', () => {
             // .toggle() sẽ tự động: thêm class nếu chưa có, xóa class nếu đã có
             const isExpanding = productContainer.classList.toggle('full-grid');
-            
+
             if (isExpanding) {
                 // TRẠNG THÁI: XEM TẤT CẢ (SHOW ALL)
                 viewAllBtn.innerText = "Show Less";
                 if (arrows) arrows.style.display = 'none';
-                
+
                 // Cuộn mượt lên đầu danh sách để dễ nhìn
                 productContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 // TRẠNG THÁI: THU GỌN (SHOW LESS)
                 viewAllBtn.innerText = "View All Products";
                 if (arrows) arrows.style.display = 'flex';
-                
+
                 // Đưa thanh cuộn ngang về vị trí đầu tiên
                 productContainer.scrollLeft = 0;
             }
@@ -158,6 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.backgroundColor = '#DB4444'; // Tô đỏ nút ngay lập tức
                 btn.querySelector('img').style.filter = 'brightness(0) invert(1)';
                 alert("Đã thêm vào Wishlist!");
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                // 👉 CHUYỂN SANG TRANG WISHLIST
+                // window.location.href = './wishlist/wishlist.html';
+
             } else {
                 // Có rồi -> Xóa ra (Bỏ yêu thích)
                 wishlist.splice(index, 1);
