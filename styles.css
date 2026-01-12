@@ -1087,7 +1087,6 @@ user-container .user-dropdown {
 
 .frame727,
 .frame729,
-.frame731,
 .frame733 {
     display: flex;
     align-items: flex-end;
@@ -1730,7 +1729,6 @@ user-container .user-dropdown {
 /* wishlist */
 .Wishlist,.menu-wish {
     padding-top: 40px;
-    margin: 0px 135px;
     display: flex;
     font-family: "Poppins";
     justify-content: space-between;
@@ -1751,71 +1749,9 @@ user-container .user-dropdown {
         cursor: pointer;
     }
 }
-.menu-wish{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 30px;
-}
-.menu-wishlist{
-    width: 270px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 16px;
-}
-.wish-1{
-    background-color: #F5F5F5;
-    width: 270px;
-    height: 250px;
-    position: relative;
 
-}
-.wish-button{
-    position: absolute;
-    button{
-        background-color:#000000;
-        color: white;
-        border-radius: 4px;
-        width: 270px;
-        height: 41px;
-        font-size: 12px;
-        font-weight: 400;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        
-    }
-}
-.wish-sale{
-    position: absolute;
-    width: 55px;
-    height: 26px;
-    background-color: #DB4444;
-    color: #FAFAFA;
-    display: flex;
-    margin: 12px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 400;
-}
-.icon-wish{
-        position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-self: end;
-    margin: 12px;
-}
-.wish-pic{
-    height: 208px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
 .just-for-you{
     font-family: "Poppins";
     font-size: 20px;
@@ -1841,3 +1777,15 @@ user-container .user-dropdown {
     border: 1px solid#00000080;
 }
     }
+.frame731{
+    justify-content: space-between;
+    display: flex;
+    
+    gap: 87px;
+}
+.jfy-products{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 30px;
+}
