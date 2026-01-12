@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-<section class="today">
-        <div class="frame727">
-            <div class="frame725">
-                <div class="frame626">
-                    <div class="frame625">
-                        <img src="./img/Rectangle 17.png" alt="">
-                        <p class="Today">Wishlist</p>
-                    </div>
-                    <h2 class="flash-title">Your Wishlist</h2>
-                </div>
-            </div>
-        </div>
 
+<body>
+    <section class="today">
+
+        <div class="Wishlist">
+            <p class="wishlist-count">Wishlist (0)</p>
+            <button class="move-all-btn">Move All To Bag</button>
+
+        </div>
         <!-- DANH SÁCH SẢN PHẨM -->
         <div class="product wishlist-list">
             <!-- JS sẽ render sản phẩm vào đây -->
         </div>
     </section>
-    
+    <!-- JUST FOR YOU -->
+    <section class="today">
+        <div class="frame731">
+            <div class="frame725">
+                <div class="frame621">
+                    <div class="frame625">
+                        <img src="../img/Rectangle 17.png" alt="">
+                        <p class="just-for-you">Just For You</p>
+                    </div>
+                </div>
+            </div>
+            <div class="seeall">
+                <button>See All</button>
+            </div>
+        </div>
+
+        <div class="jfy-products" id="just-for-you">
+            <!-- JS render -->
+        </div>
+
+    </section>
+
 </body>
 <script src="./wishlist.js"></script>
 <script src="../script.js"></script>
+
 </html>

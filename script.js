@@ -134,16 +134,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // wishlist //
 document.addEventListener('DOMContentLoaded', () => {
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
-
     wishlistBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Lấy thông tin từ thẻ cha (product-card)
             const productCard = btn.closest('.product-card');
+            // Tìm sale trong card (nếu có)
+            const saleEl = productCard.querySelector('[class^="sale-tag"]');
             const product = {
                 id: productCard.dataset.id,
                 name: productCard.dataset.name,
                 price: productCard.dataset.price,
-                img: productCard.dataset.img
+                img: productCard.dataset.img,
+                sale: saleEl ? saleEl.innerText.replace('%', '').replace('-', '') : null
+                
             };
 
             // Lấy danh sách wishlist hiện tại từ LocalStorage (nếu chưa có thì tạo mảng rỗng)
@@ -176,3 +179,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// just for you
+document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const productCard = btn.closest(".product-card");
+        if (!productCard) return;
+
+        const product = {
+            id: productCard.dataset.id,
+            name: productCard.dataset.name,
+            price: productCard.dataset.price,
+            img: productCard.dataset.img
+        };
+
+        // Lưu product để Just For You dùng
+        localStorage.setItem("justForYou", JSON.stringify(product));
+
+        // Chuyển sang wishlist.html
+        window.location.href = "./wishlist/wishlist.html";
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const viewBtns = document.querySelectorAll(".view-btn");
+
+    viewBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const productCard = btn.closest(".product-card");
+            if (!productCard) return;
+
+            // Lấy sale nếu có
+            const saleEl = productCard.querySelector('[class^="sale-tag"]');
+
+            const product = {
+                id: productCard.dataset.id,
+                name: productCard.dataset.name,
+                price: productCard.dataset.price,
+                img: productCard.dataset.img,
+                sale: saleEl ? saleEl.innerText.replace('%', '').replace('-', '') : null
+            };
+
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+            const exists = wishlist.some(item => item.id === product.id);
+
+            if (!exists) {
+                wishlist.push(product);
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+                alert("Đã thêm vào Wishlist!");
+            } else {
+                alert("Sản phẩm đã có trong Wishlist!");
+            }
+
+            // 👉 CHUYỂN SANG TRANG WISHLIST
+            window.location.href = "./wishlist/wishlist.html";
+        });
+    });
+});
+
