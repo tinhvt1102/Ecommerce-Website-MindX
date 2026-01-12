@@ -228,13 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 wishlist.push(product);
                 localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
-                alert("Đã thêm vào Wishlist!");
+                alert("Đã thêm vào Just for you!");
             } else {
-                alert("Sản phẩm đã có trong Wishlist!");
+                alert("Sản phẩm đã có trong just for you!");
             }
 
             // 👉 CHUYỂN SANG TRANG WISHLIST
-            window.location.href = "./wishlist/wishlist.html";
+            // window.location.href = "./wishlist/wishlist.html";
         });
     });
 });

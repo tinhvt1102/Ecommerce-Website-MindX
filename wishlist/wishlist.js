@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             card.remove();
             const countEl = document.querySelector(".wishlist-count");
-countEl.textContent = `Wishlist (${wishlist.length})`;
+            countEl.textContent = `Wishlist (${wishlist.length})`;
 
 
             // Nếu xóa hết → hiện empty message
@@ -62,7 +62,7 @@ countEl.textContent = `Wishlist (${wishlist.length})`;
     });
 });
 // ===== JUST FOR YOU =====
-const jfyContainer = document.querySelector(".just-for-you");
+const jfyContainer = document.querySelector(".jfy-products");
 const jfyData = JSON.parse(localStorage.getItem("justForYou"));
 
 if (jfyData && jfyContainer) {
