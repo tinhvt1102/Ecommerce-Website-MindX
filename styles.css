@@ -1747,6 +1747,7 @@ user-container .user-dropdown {
         border: 1px solid #00000080;
         font-weight:500 ;
         cursor: pointer;
+        font-family: "Poppins";
     }
 }
 
@@ -1761,7 +1762,7 @@ user-container .user-dropdown {
     justify-content: flex-end;
     margin-left: auto;
     align-items: end;
-    font-family: "Poppins";
+    
     button{
             width: 159px;
     height: 56px;
@@ -1775,6 +1776,7 @@ user-container .user-dropdown {
     border-radius: 4px;
     margin-left: auto;
     border: 1px solid#00000080;
+    font-family: "Poppins";
 }
     }
 .frame731{

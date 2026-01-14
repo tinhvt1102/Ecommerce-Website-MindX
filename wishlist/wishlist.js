@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <!-- ICON REMOVE -->
                     <div class="action-icons-1">
                         <button class="icon-btn-1 remove-btn">
-                            <img src="../img/icon-delete.png" alt="Remove">
+                            <img src="/img/icon-delete.png" alt="Remove">
                         </button>
-                    </div>
+                    </div> 
 
                     <div class="picture-1">
                         <img src="${imagePath}" alt="${item.name}">
@@ -78,7 +78,7 @@ if (jfyData && jfyContainer) {
                 </div>
 
                 <button class="add-to-cart-1">
-                    <img src="../img/Cart1.png" alt=""> Add To Cart
+                    <img src="/img/Cart1.png" alt=""> Add To Cart
                 </button>
             </div>
 

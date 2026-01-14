@@ -198,7 +198,7 @@ document.querySelectorAll(".view-btn").forEach(btn => {
         localStorage.setItem("justForYou", JSON.stringify(product));
 
         // Chuyển sang wishlist.html
-        window.location.href = "./wishlist/wishlist.html";
+        // window.location.href = "./wishlist/wishlist.html";
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
