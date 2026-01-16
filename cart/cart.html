@@ -9,45 +9,78 @@
 </head>
 
 <body>
-    <div class="link-cart">
-        <a href="">Home / </a>
-        <a href=""> Cart</a>
+    <div id="header-placeholder">
     </div>
-    <div class="cart-container">
-        <div class="cart-header">
-            <div class="cart-title">
-                <p>Product</p>
-                <p>Price</p>
-                <p>Quantity</p>
-                <p>Subtotal</p>
-            </div>
-            <div class="cart-product">
-                <button>
-                    <img src="../img/icon-cancel.png" alt="">
-                </button>
-                <img src="../img/g27cq4-500x500 1.png" alt="">
-                <p>LCD Monitor</p>
-            </div>
-            <div class="cart-price">
-                <p>$650</p>
-            </div>
-            <div class="cart-quantity">
+    <div class="CART">
+        <div class="link-cart">
+            <a href="/index.html">Home / </a>
+            <a href=""> Cart</a>
+        </div>
+        <div class="Cart-container">
+            <div class="cart-header">
+                <div class="cart-title box-cart">
+                    <p>Product</p>
+                    <p>Price</p>
+                    <p>Quantity</p>
+                    <p>Subtotal</p>
+                </div>
 
+                
             </div>
-            <div class="cart-subtotal">
-                <p>$650</p>
+            <div class="cart-button">
+                <button class="return btc"> Return To Shop</button>
+                <button class="cart-update btc"> Update Cart</button>
             </div>
+        </div>
+        <div class="total-cart">
+            <div class="coupon-cart">
+
+                <input type="text" placeholder=" Coupon code">
+
+                <button class="coupon-btn">Apply Coupon</button>
+            </div>
+            <!-- card total -->
+
+            <div class="Cart-total">
+                <h1>Cart Total</h1>
+                <div class="cart-subtotal cs">
+                    <p>Subtotal:</p>
+                    <p class="subtotal-price">$0</p>
+                </div>
+
+                <div class="line1">
+                    <img src="/img/Line 1.png" alt="">
+                </div>
+
+                <div class="cart-coupon cs">
+                    <p>Coupon:</p>
+                    <p class="coupon-discount">$0</p>
+                </div>
+
+                <div class="line1">
+                    <img src="/img/Line 1.png" alt="">
+                </div>
+
+                <div class="Total cs">
+                    <p>Total:</p>
+                    <p class="total-price">$0</p>
+                </div>
+                <div class="button-checkout">
+                    <button>Procees to checkout</button>
+                </div>
+            </div>
+
 
 
         </div>
 
-
-
-
-
     </div>
+    </div>
+    <div id="footer-placeholder"></div>
 
 
 </body>
+<script src="./cart.js"></script>
+<script src="/script.js"></script>
 
 </html>

@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const wishlistContainer = document.querySelector(".wishlist-list");
+    
 
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
+    const countEl = document.querySelector(".wishlist-count");
+    countEl.textContent = `Wishlist (${wishlist.length})`;
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
         return;
