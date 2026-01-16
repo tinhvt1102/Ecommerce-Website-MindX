@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 3. Kiểm tra logic
             if (!storedUser) {
                 alert("Tài khoản không tồn tại. Vui lòng đăng ký trước!");
-                window.location.href = "../signup-feature/signup.html";
+                window.location.href = "/signup-feature/signup.html";
                 return;
             }
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("isLoggedIn", "true");
                 
                 // Chuyển về trang chủ
-                window.location.href = "../index.html";
+                window.location.href = "/index.html";
             } else {
                 // Đăng nhập sai
                 alert("Email hoặc mật khẩu không đúng. Thử lại nhé!");

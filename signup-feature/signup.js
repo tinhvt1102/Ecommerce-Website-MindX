@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Đăng ký thành công rồi!");
 
             // 4. Chuyển hướng sang trang Login
-            window.location.href = "../login-feature/login.html"; 
+            window.location.href = "/login-feature/login.html"; 
         });
     }
 });
