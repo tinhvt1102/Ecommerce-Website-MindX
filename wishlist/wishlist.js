@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }).join("");
 
-    /* ===== REMOVE WISHLIST ITEM ===== */
+    /*  REMOVE WISHLIST  */
     document.querySelectorAll(".remove-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".product-card");
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             countEl.textContent = `Wishlist (${wishlist.length})`;
 
 
-            // Nếu xóa hết → hiện empty message
+            // Nếu xóa hết hiện empty message
             if (wishlist.length === 0) {
                 wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
             }

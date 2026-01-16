@@ -100,7 +100,7 @@ function initSearchLogic() {
 document.addEventListener("DOMContentLoaded", function () {
     loadHTML("/reuseable/header.html", "header-placeholder", () => {
         initHeaderLogic();
-        initSearchLogic(); // 🔥 GỌI SEARCH SAU KHI HEADER LOAD XONG
+        initSearchLogic(); //  SEARCH SAU KHI HEADER LOAD XONG
     });
 
     loadHTML("/reuseable/footer.html", "footer-placeholder");
@@ -220,9 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
     wishlistBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Lấy thông tin từ thẻ cha (product-card)
+
+            // Lấy thông tin từ  product-card
+
             const productCard = btn.closest('.product-card');
-            // Tìm sale trong card (nếu có)
+            // Tìm sale trong card 
             const saleEl = productCard.querySelector('[class^="sale-tag"]');
             const product = {
                 id: productCard.dataset.id,
@@ -233,25 +235,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 
             };
 
-            // Lấy danh sách wishlist hiện tại từ LocalStorage (nếu chưa có thì tạo mảng rỗng)
+            // Lấy danh sách wishlist hiện tại từ LocalStorage
             let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-            // Kiểm tra xem sản phẩm đã có trong wishlist chưa
+            // Kiểm tra xem sản phẩm đã có trong wishlist
             const index = wishlist.findIndex(item => item.id === product.id);
 
             if (index === -1) {
-                // Chưa có -> Thêm vào
                 wishlist.push(product);
-                btn.style.backgroundColor = '#DB4444'; // Tô đỏ nút ngay lập tức
+                btn.style.backgroundColor = '#DB4444'; 
                 btn.querySelector('img').style.filter = 'brightness(0) invert(1)';
                 alert("Đã thêm vào Wishlist!");
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
-                // 👉 CHUYỂN SANG TRANG WISHLIST
+                //  CHUYỂN SANG TRANG WISHLIST
                 // window.location.href = './wishlist/wishlist.html';
 
             } else {
-                // Có rồi -> Xóa ra (Bỏ yêu thích)
+                // Có rồi xóa ra 
                 wishlist.splice(index, 1);
                 btn.style.backgroundColor = 'white';
                 btn.querySelector('img').style.filter = 'none';
@@ -354,7 +355,7 @@ document.querySelectorAll('[class^="add-to-cart-"]').forEach(btn => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Added to cart!');
+    alert('Đã thêm vào giỏ hàng ');
   });
 });
 
@@ -365,79 +366,31 @@ document.querySelectorAll('[class^="add-to-cart-"]').forEach(btn => {
 document.addEventListener("DOMContentLoaded", () => {
   function initSearchLogic() {
   const searchInput = document.querySelector('.search-box input');
-  if (!searchInput) return;
+  if (!searchInput || typeof PRODUCTS === "undefined") return;
 
-  const resultBox = document.createElement("div");
-  resultBox.className = "search-result-box";
-  resultBox.style.cssText = `
-    position:absolute;
-    top:45px;
-    left:0;
-    width:100%;
-    background:#fff;
-    border:1px solid #ddd;
-    z-index:9999;
-    display:none;
-  `;
-  searchInput.parentElement.appendChild(resultBox);
-
-  const products = PRODUCTS;
-
-  // ENTER
-  searchInput.addEventListener("keydown", e => {
+  searchInput.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
 
     const keyword = searchInput.value.trim().toLowerCase();
-    if (keyword.length < 3) return;
+    if (!keyword) return;
 
-    const matched = products.filter(p =>
+    const product = PRODUCTS.find(p =>
       p.name.toLowerCase().includes(keyword)
     );
 
-    if (!matched.length) {
+    if (!product) {
       alert("Không tìm thấy sản phẩm");
       return;
     }
 
-    localStorage.setItem("selectedProduct", JSON.stringify(matched[0]));
-    window.location.href = "/detail/detail.html";
-  });
+    // LƯU PRODUCT
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
 
-  // LIVE SUGGEST
-  searchInput.addEventListener("input", () => {
-    const keyword = searchInput.value.trim().toLowerCase();
-    resultBox.innerHTML = "";
-
-    if (keyword.length < 3) {
-      resultBox.style.display = "none";
-      return;
-    }
-
-    const matched = products.filter(p =>
-      p.name.toLowerCase().includes(keyword)
-    );
-
-    matched.forEach(p => {
-      const div = document.createElement("div");
-      div.style.padding = "10px";
-      div.style.cursor = "pointer";
-      div.innerHTML = `<strong>${p.name}</strong> - $${p.price}`;
-      div.onclick = () => {
-        localStorage.setItem("selectedProduct", JSON.stringify(p));
-        window.location.href = "/detail/detail.html";
-      };
-      resultBox.appendChild(div);
-    });
-
-    resultBox.style.display = matched.length ? "block" : "none";
-  });
-
-  document.addEventListener("click", e => {
-    if (!searchInput.contains(e.target)) {
-      resultBox.style.display = "none";
-    }
+    // CHUYỂN SANG DETAIL
+    window.location.href = "./detail/detail.html";
   });
 }
+
 
 });
 
