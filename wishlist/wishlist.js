@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
   const wishlistContainer = document.querySelector(".wishlist-list");
 
 
@@ -11,6 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
     wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
     return;
   }
+=======
+    const wishlistContainer = document.querySelector(".wishlist-list");
+    
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const countEl = document.querySelector(".wishlist-count");
+    countEl.textContent = `Wishlist (${wishlist.length})`;
+    if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
+        return;
+    }
+>>>>>>> 1beb3b0ff62f553aa7c1584c2b574e573d9b5c54
 
   wishlistContainer.innerHTML = wishlist.map(item => {
     const imagePath = item.img
@@ -66,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===== JUST FOR YOU =====
 const jfyContainer = document.querySelector(".jfy-products");
 
+<<<<<<< HEAD
 function resolveImgPath(path) {
   if (!path) return "";
   if (path.startsWith("http")) return path;
@@ -142,3 +156,34 @@ jfyContainer?.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   renderJFY();
 });
+=======
+if (jfyData && jfyContainer) {
+    const imagePath = jfyData.img.startsWith('./')
+        ? `../${jfyData.img.slice(2)}`
+        : jfyData.img;
+
+    jfyContainer.innerHTML = `
+        <div class="product-card">
+            <div class="product-top-1">
+                <div class="picture-1">
+                    <img src="${imagePath}" alt="${jfyData.name}">
+                </div>
+
+                <button class="add-to-cart-1">
+                    <img src="/img/Cart1.png" alt=""> Add To Cart
+                </button>
+            </div>
+
+            <div class="content-1">
+            <p class="product-name-1">${jfyData.name}</p>
+                <span class="price-new-1">${jfyData.price}</span>
+            </div>
+        </div>
+    `;
+
+    // Scroll mượt xuống Just For You
+    setTimeout(() => {
+        jfyContainer.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+}
+>>>>>>> 1beb3b0ff62f553aa7c1584c2b574e573d9b5c54

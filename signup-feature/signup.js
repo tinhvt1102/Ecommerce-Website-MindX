@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault(); // Chặn trang web load lại
 
             // 1. Lấy dữ liệu từ các ô Input
-            const name = document.getElementById("signup-name").value;
-            const email = document.getElementById("signup-email").value;
+            const name = document.getElementById("signup-name").value.trim();
+            const email = document.getElementById("signup-email").value.trim();
             const pass = document.getElementById("signup-pass").value;
 
             // Kiểm tra xem dữ liệu có trống không
@@ -15,7 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Vui lòng điền đẩy đủ thông tin");
                 return;
             }
-
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Định dạng Email không hợp lệ! Vui lòng kiểm tra lại.");
+                return;
+            }
             // 2. Tạo đối tượng người dùng
             const userData = {
                 name: name,
@@ -30,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Đăng ký thành công rồi!");
 
             // 4. Chuyển hướng sang trang Login
-            window.location.href = "../login-feature/login.html"; 
+            window.location.href = "/login-feature/login.html"; 
         });
     }
 });
