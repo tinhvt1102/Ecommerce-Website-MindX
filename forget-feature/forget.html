@@ -21,36 +21,39 @@
 <body>
     <div id="header-placeholder"></div>
 
-    <main class="auth-section">
-        <div class="auth-image">
-            <img src="/img/dl.beatsnoop 1.png" alt="Shopping Illustration">
-        </div>
-
-        <div class="auth-form-container">
-            <div class="auth-form-content">
-                <h2>Log in to Exclusive</h2>
-                <p>Enter your details below</p>
-
-                <form id="login-form">
-                    <div class="input-group">
-                        <input id="login-email" type="email" placeholder="Email" required>
-                    </div>
-                    <div class="input-group">
-                        <input id="login-pass" type="password" placeholder="Password" required>
-                    </div>
-
-                    <div class="login-actions">
-                        <button id="btn-login" type="submit" class="btn-login">Log In</button>
-                        <a href="/forget-feature/forget.html" class="forgot-password">Forget Password?</a>
-                    </div>
-                </form>
+    <div class="auth-container">
+    <div class="auth-form-box">
+        <h2>Reset Password</h2>
+        <p>Enter your details below</p>
+        
+        <form id="forgot-form" class="exclusive-form">
+            <div id="step-verify">
+                <div class="input-group">
+                    <input type="email" id="reset-email" placeholder="Email" required>
+                </div>
+                <button type="button" id="btn-verify" class="btn-primary">Continue</button>
             </div>
+
+            <div id="step-reset" style="display: none;">
+                <div class="input-group">
+                    <input type="password" id="new-password" placeholder="New Password" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="confirm-password" placeholder="Confirm New Password" required>
+                </div>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </div>
+        </form>
+        
+        <div class="auth-footer">
+            <a href="/login-feature/login.html">Back to Login</a>
         </div>
-    </main>
+    </div>
+</div>
 
     <div id="footer-placeholder"></div>
-    
-    <script src="/login-feature/login.js"></script>
+
+    <script src="/forget-feature/forget.js"></script>
     <script src="/script.js"></script>
 </body>
 

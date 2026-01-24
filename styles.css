@@ -885,6 +885,7 @@ user-container .user-dropdown {
     margin-bottom: 40px;
     position: relative;
 }
+
 /* Cụm "Today's" và Title */
 .frame625 {
     display: flex;
@@ -949,14 +950,18 @@ user-container .user-dropdown {
     cursor: pointer;
     width: 46px;
     height: 46px;
-    opacity: 0.5; 
+    opacity: 0.5;
     transition: all 0.3s ease;
 }
+
 .frame726 img:hover {
-    opacity: 1; /* Hiện rõ 100% */
-    background-color: #DB4444; /* Đổi nền sang đỏ thương hiệu */
-    
+    opacity: 1;
+    /* Hiện rõ 100% */
+    background-color: #DB4444;
+    /* Đổi nền sang đỏ thương hiệu */
+
 }
+
 /* Danh sách sản phẩm */
 .product {
     display: flex;
@@ -1009,28 +1014,38 @@ user-container .user-dropdown {
 /* Thêm đoạn này vào file CSS của bạn */
 .product.full-grid {
     display: flex;
-    flex-wrap: wrap;         /* Quan trọng nhất: cho phép xuống dòng */
-    overflow-x: visible;     /* Tắt cuộn ngang */
-    justify-content: flex-start; /* Căn lề trái cho sản phẩm */
-    height: auto;            /* Mở rộng chiều cao tự động */
+    flex-wrap: wrap;
+    /* Quan trọng nhất: cho phép xuống dòng */
+    overflow-x: visible;
+    /* Tắt cuộn ngang */
+    justify-content: flex-start;
+    /* Căn lề trái cho sản phẩm */
+    height: auto;
+    /* Mở rộng chiều cao tự động */
 }
 
 /* Đảm bảo card sản phẩm không bị co lại khi dàn hàng */
 .product.full-grid .product-card {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
+
 /* Class này sẽ được JS thêm vào khi bấm nút */
 .product.show-all {
-    flex-wrap: wrap;       /* Cho phép sản phẩm xuống dòng */
-    overflow-x: visible;   /* Tắt cuộn ngang */
-    justify-content: center; /* Căn giữa các sản phẩm khi hiện ra hết */
-    scroll-behavior: auto; 
+    flex-wrap: wrap;
+    /* Cho phép sản phẩm xuống dòng */
+    overflow-x: visible;
+    /* Tắt cuộn ngang */
+    justify-content: center;
+    /* Căn giữa các sản phẩm khi hiện ra hết */
+    scroll-behavior: auto;
 }
 
 /* Ẩn bớt các nút không cần thiết khi đã hiện tất cả */
-.show-all ~ .view-product {
-    display: none; /* Ẩn nút View All sau khi đã bấm */
+.show-all~.view-product {
+    display: none;
+    /* Ẩn nút View All sau khi đã bấm */
 }
+
 /* Nút View All Products */
 .view-product {
     display: flex;
@@ -1045,20 +1060,22 @@ user-container .user-dropdown {
     border: none;
     padding: 16px 48px;
     border-radius: 4px;
-    font-size:16px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     transform: all 0.3 ease;
 }
 
 .view-product button:hover {
-    background-color: #E07575; 
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 15px rgba(219, 68, 68, 0.3); 
+    background-color: #E07575;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(219, 68, 68, 0.3);
 }
+
 .view-product button:active {
     transform: translateY(0);
 }
+
 /* Đường line phân cách */
 .line {
     text-align: center;
@@ -1727,25 +1744,28 @@ user-container .user-dropdown {
     display: block;
 }
 
-.Wishlist,.menu-wish {
+.Wishlist,
+.menu-wish {
     padding-top: 40px;
     display: flex;
     font-family: "Poppins";
     justify-content: space-between;
-    P{
+
+    P {
         display: flex;
         font-weight: 400;
         font-size: 20px;
         align-items: center;
     }
-    button{
+
+    button {
         background-color: white;
         color: #000;
         width: 223px;
         height: 56px;
         border-radius: 4px;
         border: 1px solid #00000080;
-        font-weight:500 ;
+        font-weight: 500;
         cursor: pointer;
         font-family: "Poppins";
     }
@@ -1753,44 +1773,49 @@ user-container .user-dropdown {
 
 
 
-.just-for-you{
+.just-for-you {
     font-family: "Poppins";
     font-size: 20px;
     font-weight: 400;
-}.seeall{
+}
+
+.seeall {
     display: flex;
     justify-content: flex-end;
     margin-left: auto;
     align-items: end;
-    
-    button{
-            width: 159px;
-    height: 56px;
-    background-color: white;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 500;
-    border-radius: 4px;
-    margin-left: auto;
-    border: 1px solid#00000080;
-    font-family: "Poppins";
-}
+
+    button {
+        width: 159px;
+        height: 56px;
+        background-color: white;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        border-radius: 4px;
+        margin-left: auto;
+        border: 1px solid#00000080;
+        font-family: "Poppins";
     }
-.frame731{
+}
+
+.frame731 {
     justify-content: space-between;
     display: flex;
-    
+
     gap: 87px;
 }
-.jfy-products{
+
+.jfy-products {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
     margin-top: 30px;
 }
+
 /* account  */
 
 
@@ -1805,35 +1830,37 @@ user-container .user-dropdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; 
-    max-width: 1170px; 
-    margin: 80px auto 40px auto; 
-    padding: 0 15px; 
-    box-sizing: border-box; 
+    width: 100%;
+    max-width: 1170px;
+    margin: 80px auto 40px auto;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .breadcrumb-left a {
     text-decoration: none;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .breadcrumb-left span {
     color: #000;
     font-weight: 500;
 }
+
 .breadcrumb-right {
     font-size: 14px;
     color: black;
 }
+
 .user-name {
-    color: #DB4444; 
+    color: #DB4444;
     font-weight: 500;
 }
 
 
 .account-wrapper {
     display: flex;
-    gap: 100px; 
+    gap: 100px;
     margin-bottom: 140px;
 }
 
@@ -1851,7 +1878,7 @@ user-container .user-dropdown {
 
 .menu-group ul {
     list-style: none;
-    padding-left: 35px; 
+    padding-left: 35px;
     margin-bottom: 25px;
 }
 
@@ -1861,12 +1888,12 @@ user-container .user-dropdown {
 
 .menu-group ul li a {
     text-decoration: none;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
     font-size: 14px;
     transition: 0.3s ease;
 }
 
-.menu-group ul li a:hover, 
+.menu-group ul li a:hover,
 .menu-group ul li a.active {
     color: #DB4444;
 }
@@ -1903,14 +1930,14 @@ user-container .user-dropdown {
     flex-direction: column;
 }
 
-.form-group label, 
+.form-group label,
 .password-section label {
     margin-bottom: 8px;
     font-size: 16px;
     color: #000;
 }
 
-.form-group input, 
+.form-group input,
 .password-section input {
     background: #F5F5F5;
     border: none;
@@ -1922,7 +1949,7 @@ user-container .user-dropdown {
 
 .form-group input::placeholder,
 .password-section input::placeholder {
-    color: rgba(0,0,0,0.4);
+    color: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -1963,6 +1990,7 @@ user-container .user-dropdown {
 .btn-save:hover {
     background: #E06767;
 }
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -1978,18 +2006,20 @@ user-container .user-dropdown {
     font-weight: 500;
 }
 
-.address-grid, .payment-grid {
+.address-grid,
+.payment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
-.address-card, .payment-card {
+.address-card,
+.payment-card {
     border: 1px solid #f5f5f5;
     padding: 20px;
     border-radius: 4px;
     background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .address-card.default {
@@ -2019,13 +2049,15 @@ user-container .user-dropdown {
     cursor: pointer;
     color: #666;
 }
+
 .content-section {
-    display: none; 
+    display: none;
 }
 
 .content-section.active {
     display: block;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -2034,7 +2066,7 @@ user-container .user-dropdown {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -2043,7 +2075,7 @@ user-container .user-dropdown {
     padding: 30px;
     width: 400px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal-actions {
@@ -2051,4 +2083,190 @@ user-container .user-dropdown {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
+}
+
+#change-password .form-group {
+    margin-bottom: 20px;
+}
+
+#change-password input {
+    width: 100%;
+    padding: 12px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Forget password */
+:root {
+    --primary-red: #DB4444;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-form-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.auth-form-box h2 {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.auth-form-box p {
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #7D8184;
+    padding: 10px 0;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+}
+
+.input-group input:focus {
+    border-bottom: 1px solid var(--primary-red);
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e03a3a;
+}
+
+.auth-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.auth-footer a {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* contact */
+.breadcrumb {
+    margin: 80px 80px 40px ;
+    padding: 0 15px;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+.breadcrumb span {
+    font-weight: 500;
+    color: #000;
+}
+.contact-container {
+    display: flex;
+    gap: 30px;
+    padding: 40px 5%;
+    font-family: 'Inter', sans-serif;
+}
+.contact-info {
+    flex: 1;
+    padding: 40px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.icon-circle {
+    background: #DB4444;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info-section p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #000000;
+    opacity: 0.3;
+}
+.contact-form-container {
+    flex: 2.5;
+    padding: 40px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.input-row input,
+.message-area textarea {
+    width: 100%;
+    padding: 13px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.btn-primary {
+    background: #DB4444;
+    color: white;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-primary:hover {
+    background: #E07575;
 }

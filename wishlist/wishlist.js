@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const wishlistContainer = document.querySelector(".wishlist-list");
+    
 
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
+    const countEl = document.querySelector(".wishlist-count");
+    countEl.textContent = `Wishlist (${wishlist.length})`;
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
         return;
@@ -83,7 +85,7 @@ if (jfyData && jfyContainer) {
             </div>
 
             <div class="content-1">
-                <p class="product-name-1">${jfyData.name}</p>
+            <p class="product-name-1">${jfyData.name}</p>
                 <span class="price-new-1">${jfyData.price}</span>
             </div>
         </div>

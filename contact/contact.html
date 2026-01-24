@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumb">
+        <a href="/index.html">Home</a> / <span>Contact</span>
+    </nav>
+
+    <main class="contact-container">
+        <aside class="contact-info">
+            <div class="info-section">
+                <div class="info-header">
+                    <div class="icon-circle">
+                        <img src="/img/icons-phone.png" alt="Phone-icon">
+                    </div>
+                    <h3>Call To Us</h3>
+                </div>
+                <p>We are available 24/7, 7 days a week.</p>
+                <p>Phone: +8801611112222</p>
+            </div>
+
+            <hr>
+
+            <div class="info-section">
+                <div class="info-header">
+                    <div class="icon-circle">
+                        <img src="/img/icons-mail.png" alt="Mall-icon">
+                    </div>
+                    <h3>Write To Us</h3>
+                </div>
+                <p>Fill out our form and we will contact you within 24 hours.</p>
+                <p>Emails: customer@exclusive.com</p>
+                <p>Emails: support@exclusive.com</p>
+            </div>
+        </aside>
+
+        <section class="contact-form-container">
+            <form id="contact-form">
+                <div class="input-row">
+                    <input type="text" id="contact-name" placeholder="Your Name *" required>
+                    <input type="email" id="contact-email" placeholder="Your Email *" required>
+                    <input type="tel" id="contact-phone" placeholder="Your Phone *" required>
+                </div>
+                <div class="message-area">
+                    <textarea id="contact-message" placeholder="Your Massage" rows="8"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Send Massage</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/script.js"></script>
+</body>
+
+</html>
