@@ -65,34 +65,80 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // ===== JUST FOR YOU =====
 const jfyContainer = document.querySelector(".jfy-products");
-const jfyData = JSON.parse(localStorage.getItem("justForYou"));
 
-if (jfyData && jfyContainer) {
-    const imagePath = jfyData.img.startsWith('./')
-        ? `../${jfyData.img.slice(2)}`
-        : jfyData.img;
-
-    jfyContainer.innerHTML = `
-        <div class="product-card">
-            <div class="product-top-1">
-                <div class="picture-1">
-                    <img src="${imagePath}" alt="${jfyData.name}">
-                </div>
-
-                <button class="add-to-cart-1">
-                    <img src="/img/Cart1.png" alt=""> Add To Cart
-                </button>
-            </div>
-
-            <div class="content-1">
-                <p class="product-name-1">${jfyData.name}</p>
-                <span class="price-new-1">${jfyData.price}</span>
-            </div>
-        </div>
-    `;
-
-    // Scroll mượt xuống Just For You
-    setTimeout(() => {
-        jfyContainer.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+function resolveImgPath(path) {
+  if (!path) return "";
+  if (path.startsWith("http")) return path;
+  if (path.startsWith("./")) return `../${path.slice(2)}`;
+  if (path.startsWith("/")) return `..${path}`;
+  if (path.startsWith("img/")) return `../${path}`;
+  return path;
 }
+
+function renderJFY() {
+  if (!jfyContainer) return;
+
+  let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
+
+  // nếu lỡ trước đó bạn lưu 1 object -> convert về array
+  if (!Array.isArray(jfy)) jfy = [jfy];
+
+  if (jfy.length === 0) {
+    jfyContainer.innerHTML = "<p>Just For You is empty.</p>";
+    return;
+  }
+
+  jfyContainer.innerHTML = jfy
+    .map((item) => {
+      const imagePath = resolveImgPath(item.img);
+
+      return `
+        <div class="product-card" data-id="${item.id}">
+          <!-- ICON REMOVE giống wishlist -->
+          <div class="action-icons-1">
+            <button class="icon-btn-1 jfy-remove-btn" type="button" title="Remove">
+              <img src="../img/icon-delete.png" alt="Remove">
+            </button>
+          </div>
+
+          <div class="product-top-1">
+            <div class="picture-1">
+              <img src="${imagePath}" alt="${item.name}">
+            </div>
+
+            <button class="add-to-cart-1" type="button">
+              <img src="../img/Cart1.png" alt=""> Add To Cart
+            </button>
+          </div>
+
+          <div class="content-1">
+            <p class="product-name-1">${item.name}</p>
+            <span class="price-new-1">${item.price}</span>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+// Click remove từng sản phẩm trong JFY (event delegation)
+jfyContainer?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".jfy-remove-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".product-card");
+  const id = card?.dataset?.id;
+  if (!id) return;
+
+  let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
+  if (!Array.isArray(jfy)) jfy = [jfy];
+
+  jfy = jfy.filter((item) => item.id !== id);
+  localStorage.setItem("justForYou", JSON.stringify(jfy));
+
+  renderJFY();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderJFY();
+});

@@ -265,133 +265,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 // just for you
-document.querySelectorAll(".view-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
+function addToJustForYou(product) {
+  let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
 
-        const productCard = btn.closest(".product-card");
-        if (!productCard) return;
+  // Nếu lỡ trước đó lưu dạng object -> convert sang array
+  if (!Array.isArray(jfy)) jfy = [jfy];
 
-        const product = {
-            id: productCard.dataset.id,
-            name: productCard.dataset.name,
-            price: productCard.dataset.price,
-            img: productCard.dataset.img
-        };
+  // Không cho trùng
+  const exists = jfy.some(item => item.id === product.id);
+  if (exists) return false;
 
-        // Lưu product để Just For You dùng
-        localStorage.setItem("justForYou", JSON.stringify(product));
+  // Cho sản phẩm mới lên đầu danh sách
+  jfy.unshift(product);
 
-        // Chuyển sang wishlist.html
-        // window.location.href = "./wishlist/wishlist.html";
-    });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const viewBtns = document.querySelectorAll(".view-btn");
+  // (tuỳ chọn) giới hạn tối đa 8 sản phẩm
+  // jfy = jfy.slice(0, 8);
 
-    viewBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const productCard = btn.closest(".product-card");
-            if (!productCard) return;
-
-            // Lấy sale nếu có
-            const saleEl = productCard.querySelector('[class^="sale-tag"]');
-
-            const product = {
-                id: productCard.dataset.id,
-                name: productCard.dataset.name,
-                price: productCard.dataset.price,
-                img: productCard.dataset.img,
-                sale: saleEl ? saleEl.innerText.replace('%', '').replace('-', '') : null
-            };
-
-            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-            const exists = wishlist.some(item => item.id === product.id);
-
-            if (!exists) {
-                wishlist.push(product);
-                localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
-                alert("Đã thêm vào Just for you!");
-            } else {
-                alert("Sản phẩm đã có trong just for you!");
-            }
-
-            // 👉 CHUYỂN SANG TRANG WISHLIST
-            // window.location.href = "./wishlist/wishlist.html";
-        });
-    });
-});
-// cart
-document.querySelectorAll('[class^="add-to-cart-"]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const productCard = btn.closest('.product-card');
-    if (!productCard) return;
-
-    const price = Number(productCard.dataset.price);
-
-    if (isNaN(price)) {
-      alert('Price error!');
-      return;
-    }
-
-    const product = {
-      id: productCard.dataset.id,
-      name: productCard.dataset.name,
-      price: price,
-      img: productCard.dataset.img,
-      quantity: 1
-    };
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    const existing = cart.find(item => item.id === product.id);
-
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push(product);
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Đã thêm vào giỏ hàng ');
-  });
-});
-
-
-
-
-// detail
-document.addEventListener("DOMContentLoaded", () => {
-  function initSearchLogic() {
-  const searchInput = document.querySelector('.search-box input');
-  if (!searchInput || typeof PRODUCTS === "undefined") return;
-
-  searchInput.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter") return;
-
-    const keyword = searchInput.value.trim().toLowerCase();
-    if (!keyword) return;
-
-    const product = PRODUCTS.find(p =>
-      p.name.toLowerCase().includes(keyword)
-    );
-
-    if (!product) {
-      alert("Không tìm thấy sản phẩm");
-      return;
-    }
-
-    // LƯU PRODUCT
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-
-    // CHUYỂN SANG DETAIL
-    window.location.href = "./detail/detail.html";
-  });
+  localStorage.setItem("justForYou", JSON.stringify(jfy));
+  return true;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
 
+      const productCard = btn.closest(".product-card");
+      if (!productCard) return;
+
+      const saleEl = productCard.querySelector('[class^="sale-tag"]');
+
+      const product = {
+        id: productCard.dataset.id,
+        name: productCard.dataset.name,
+        price: productCard.dataset.price,
+        img: productCard.dataset.img,
+        details: productCard.dataset.details,
+        sale: saleEl ? saleEl.innerText.replace('%','').replace('-','') : null
+      };
+
+      const added = addToJustForYou(product);
+
+      if (added) alert("Đã thêm vào Just For You!");
+      else alert("Sản phẩm đã có trong Just For You!");
+    });
+  });
 });
-
-
