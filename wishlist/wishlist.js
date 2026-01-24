@@ -1,22 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const wishlistContainer = document.querySelector(".wishlist-list");
-    
+  const wishlistContainer = document.querySelector(".wishlist-list");
 
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const countEl = document.querySelector(".wishlist-count");
-    countEl.textContent = `Wishlist (${wishlist.length})`;
-    if (wishlist.length === 0) {
-        wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
-        return;
-    }
 
-    wishlistContainer.innerHTML = wishlist.map(item => {
-        const imagePath = item.img.startsWith('./')
-            ? `../${item.img.slice(2)}`
-            : item.img;
-            
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlist = wishlist.filter(item => item && item.id && item.name && item.img);
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  const countEl = document.querySelector(".wishlist-count");
+  countEl.textContent = `Wishlist (${wishlist.length})`;
+  if (wishlist.length === 0) {
+    wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
+    return;
+  }
 
-        return `
+  wishlistContainer.innerHTML = wishlist.map(item => {
+    const imagePath = item.img
+
+
+    return `
             <div class="product-card" data-id="${item.id}">
                 
                 <div class="product-top-1">
@@ -40,28 +40,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
         `;
-    }).join("");
+  }).join("");
 
-    /*  REMOVE WISHLIST  */
-    document.querySelectorAll(".remove-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const card = btn.closest(".product-card");
-            const id = card.dataset.id;
+  /*  REMOVE WISHLIST  */
+  document.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".product-card");
+      const id = card.dataset.id;
 
-            wishlist = wishlist.filter(item => item.id !== id);
-            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      wishlist = wishlist.filter(item => item.id !== id);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
-            card.remove();
-            const countEl = document.querySelector(".wishlist-count");
-            countEl.textContent = `Wishlist (${wishlist.length})`;
+      card.remove();
+      const countEl = document.querySelector(".wishlist-count");
+      countEl.textContent = `Wishlist (${wishlist.length})`;
 
 
-            // Nếu xóa hết hiện empty message
-            if (wishlist.length === 0) {
-                wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
-            }
-        });
+      // Nếu xóa hết hiện empty message
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
+      }
     });
+  });
 });
 // ===== JUST FOR YOU =====
 const jfyContainer = document.querySelector(".jfy-products");
