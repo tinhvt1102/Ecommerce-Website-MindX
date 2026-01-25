@@ -97,7 +97,8 @@ document.addEventListener('click', e => {
 
   // Update UI
   cartItem.querySelector('.qty-input').value = item.quantity;
-  cartItem.querySelector('.cart-subtotal p').innerText =`$${item.price * item.quantity}`;
+  cartItem.querySelector('.cart-subtotal p').innerText =
+    `$${item.price * item.quantity}`;
 
   updateCartTotal(currentDiscount);
 });
@@ -148,3 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartTotal();
   });
 });
+
+
+
+
+
+
+
+
+

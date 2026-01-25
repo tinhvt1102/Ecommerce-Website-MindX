@@ -16,12 +16,96 @@
 // }
 
 // // Khi trang load xong
-// document.addEventListener("DOMContentLoaded", function () {
-//     loadHTML("header.html", "header-placeholder");
-//     loadHTML("footer.html", "footer-placeholder");
-//     if (window.location.pathname.includes("signup.html")) {
-//     }
-// });
+function initSearchLogic() {
+  const searchInput = document.querySelector('.search-box input');
+  if (!searchInput) {
+    console.warn("Search input not found");
+    return;
+  }
+
+  const resultBox = document.createElement("div");
+  resultBox.className = "search-result-box";
+  resultBox.style.cssText = `
+    position:absolute;
+    top:45px;
+    left:0;
+    width:100%;
+    background:#fff;
+    border:1px solid #ddd;
+    z-index:9999;
+    display:none;
+  `;
+  searchInput.parentElement.appendChild(resultBox);
+
+  const products = [...document.querySelectorAll(".product-card")].map(card => ({
+    id: card.dataset.id,
+    name: card.dataset.name,
+    price: card.dataset.price,
+    img: card.dataset.img,
+    details: card.dataset.details
+  }));
+
+  // ENTER SEARCH
+  searchInput.addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+
+    const keyword = searchInput.value.trim().toLowerCase();
+    if (keyword.length < 3) return;
+
+    const matched = products.filter(p =>
+      p.name.toLowerCase().includes(keyword)
+    );
+
+    if (!matched.length) {
+      alert("Không tìm thấy sản phẩm");
+      return;
+    }
+
+    localStorage.setItem("selectedProduct", JSON.stringify(matched[0]));
+    window.location.href = "/detail/detail.html";
+  });
+
+  // LIVE SUGGEST
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    resultBox.innerHTML = "";
+
+    if (keyword.length < 3) {
+      resultBox.style.display = "none";
+      return;
+    }
+
+    const matched = products.filter(p =>
+      p.name.toLowerCase().includes(keyword)
+    );
+
+    matched.forEach(p => {
+      const div = document.createElement("div");
+      div.style.padding = "10px";
+      div.style.cursor = "pointer";
+      div.innerHTML = `<strong>${p.name}</strong> - $${p.price}`;
+
+      div.onclick = () => {
+        localStorage.setItem("selectedProduct", JSON.stringify(p));
+        window.location.href = "/detail/detail.html";
+      };
+
+      resultBox.appendChild(div);
+    });
+
+    resultBox.style.display = matched.length ? "block" : "none";
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadHTML("/reuseable/header.html", "header-placeholder", () => {
+        initHeaderLogic();
+        initSearchLogic(); //  SEARCH SAU KHI HEADER LOAD XONG
+    });
+
+    loadHTML("/reuseable/footer.html", "footer-placeholder");
+});
+
 
 // ===== LOAD HTML TỰ ĐỘNG =====
 function loadHTML(file, elementId, callback) {
@@ -136,9 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const wishlistBtns = document.querySelectorAll('.wishlist-btn');
     wishlistBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Lấy thông tin từ thẻ cha (product-card)
+
+            // Lấy thông tin từ  product-card
+
             const productCard = btn.closest('.product-card');
-            // Tìm sale trong card (nếu có)
+            // Tìm sale trong card 
             const saleEl = productCard.querySelector('[class^="sale-tag"]');
             const product = {
                 id: productCard.dataset.id,
@@ -149,25 +235,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 
             };
 
-            // Lấy danh sách wishlist hiện tại từ LocalStorage (nếu chưa có thì tạo mảng rỗng)
+            // Lấy danh sách wishlist hiện tại từ LocalStorage
             let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-            // Kiểm tra xem sản phẩm đã có trong wishlist chưa
+            // Kiểm tra xem sản phẩm đã có trong wishlist
             const index = wishlist.findIndex(item => item.id === product.id);
 
             if (index === -1) {
-                // Chưa có -> Thêm vào
                 wishlist.push(product);
-                btn.style.backgroundColor = '#DB4444'; // Tô đỏ nút ngay lập tức
+                btn.style.backgroundColor = '#DB4444'; 
                 btn.querySelector('img').style.filter = 'brightness(0) invert(1)';
                 alert("Đã thêm vào Wishlist!");
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
-                // 👉 CHUYỂN SANG TRANG WISHLIST
+                //  CHUYỂN SANG TRANG WISHLIST
                 // window.location.href = './wishlist/wishlist.html';
 
             } else {
-                // Có rồi -> Xóa ra (Bỏ yêu thích)
+                // Có rồi xóa ra 
                 wishlist.splice(index, 1);
                 btn.style.backgroundColor = 'white';
                 btn.querySelector('img').style.filter = 'none';
@@ -180,62 +265,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 // just for you
-document.querySelectorAll(".view-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
+function addToJustForYou(product) {
+  let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
 
-        const productCard = btn.closest(".product-card");
-        if (!productCard) return;
+  // Nếu lỡ trước đó lưu dạng object -> convert sang array
+  if (!Array.isArray(jfy)) jfy = [jfy];
 
-        const product = {
-            id: productCard.dataset.id,
-            name: productCard.dataset.name,
-            price: productCard.dataset.price,
-            img: productCard.dataset.img
-        };
+  // Không cho trùng
+  const exists = jfy.some(item => item.id === product.id);
+  if (exists) return false;
 
-        // Lưu product để Just For You dùng
-        localStorage.setItem("justForYou", JSON.stringify(product));
+  // Cho sản phẩm mới lên đầu danh sách
+  jfy.unshift(product);
 
-        // Chuyển sang wishlist.html
-        // window.location.href = "./wishlist/wishlist.html";
-    });
-});
+  // (tuỳ chọn) giới hạn tối đa 8 sản phẩm
+  // jfy = jfy.slice(0, 8);
+
+  localStorage.setItem("justForYou", JSON.stringify(jfy));
+  return true;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const viewBtns = document.querySelectorAll(".view-btn");
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    viewBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const productCard = btn.closest(".product-card");
-            if (!productCard) return;
+      const productCard = btn.closest(".product-card");
+      if (!productCard) return;
 
-            // Lấy sale nếu có
-            const saleEl = productCard.querySelector('[class^="sale-tag"]');
+      const saleEl = productCard.querySelector('[class^="sale-tag"]');
 
-            const product = {
-                id: productCard.dataset.id,
-                name: productCard.dataset.name,
-                price: productCard.dataset.price,
-                img: productCard.dataset.img,
-                sale: saleEl ? saleEl.innerText.replace('%', '').replace('-', '') : null
-            };
+      const product = {
+        id: productCard.dataset.id,
+        name: productCard.dataset.name,
+        price: productCard.dataset.price,
+        img: productCard.dataset.img,
+        details: productCard.dataset.details,
+        sale: saleEl ? saleEl.innerText.replace('%','').replace('-','') : null
+      };
 
-            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const added = addToJustForYou(product);
 
-            const exists = wishlist.some(item => item.id === product.id);
-
-            if (!exists) {
-                wishlist.push(product);
-                localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
-                alert("Đã thêm vào Just for you!");
-            } else {
-                alert("Sản phẩm đã có trong just for you!");
-            }
-
-            // 👉 CHUYỂN SANG TRANG WISHLIST
-            // window.location.href = "./wishlist/wishlist.html";
-        });
+      if (added) alert("Đã thêm vào Just For You!");
+      else alert("Sản phẩm đã có trong Just For You!");
     });
+  });
 });
-
