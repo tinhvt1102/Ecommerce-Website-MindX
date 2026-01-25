@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="content-1">
                     <p class="product-name-1">${item.name}</p>
-                    <span class="price-new-1">${item.price}</span>
+                    <span class="price-new-1">$${item.price}</span>
                 </div>
             </div>
         `;
@@ -113,7 +113,7 @@ function renderJFY() {
 
           <div class="content-1">
             <p class="product-name-1">${item.name}</p>
-            <span class="price-new-1">${item.price}</span>
+            <span class="price-new-1">$${item.price}</span>
           </div>
         </div>
       `;

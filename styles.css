@@ -5,7 +5,7 @@
 
 }
 
-.body {
+body {
     font-family: "Poppins", sans-serif;
 
 }
@@ -1967,6 +1967,7 @@ user-container .user-dropdown {
 }
 
 .frame731 {
+    display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
 }
@@ -2378,7 +2379,6 @@ user-container .user-dropdown {
     align-items: center;
     gap: 16px;
 }
-
 /* Checkout */
 
 .checkout-container {
@@ -2437,7 +2437,7 @@ user-container .user-dropdown {
         height: 54px;
     }
 }
-.product-info{
+.product-infoo{
     width: 347px;
     height: 24px;
     display: flex;
