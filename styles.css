@@ -70,7 +70,66 @@ body {
     gap: 190px;
     padding: 0;
 }
+@media (max-width: 1024px) {
+    .header {
+        height: auto;
+        padding: 15px;
+        flex-wrap: wrap;
+    }
+    .right-header {
+        gap: 20px;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+    }  
+    .nav-menu {
+        gap: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .top-header {
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    .title-topheader {
+        font-size: 12px;
+    }
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
 
+    .nav-menu {
+        display: none;
+    }
+    .right-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-container {
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100% !important;
+    }
+    .header-icons-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .wishlist-count, .cart-count {
+        width: 14px;
+        height: 14px;
+        font-size: 9px;
+    }
+}
 .logo {
     font-weight: 700;
     font-family: "Inter", sans-serif;
@@ -145,7 +204,6 @@ body {
 
 .search-box>img {
     position: static !important;
-    /* Bỏ absolute cũ để nó tự dàn hàng */
     width: 24px !important;
     height: 24px !important;
     cursor: pointer;
@@ -163,14 +221,11 @@ body {
     cursor: pointer;
 }
 
-
-/* Container bọc icon user đỏ */
 .user-container {
     position: relative;
     display: flex;
     align-items: center;
     height: 100%;
-    /* Đảm bảo chiều cao để bắt hover tốt hơn */
 }
 
 .user-icon {
@@ -181,7 +236,6 @@ body {
     height: 32px !important;
 }
 
-/* Menu Dropdown - Hiệu ứng mờ nền */
 .user-dropdown {
     position: absolute;
     top: 40px;
@@ -193,9 +247,7 @@ body {
     border-radius: 4px;
     padding: 15px 0;
     display: none;
-    /* Ẩn mặc định */
     flex-direction: column;
-    /* Xếp dọc */
     z-index: 10000;
 }
 
@@ -203,13 +255,10 @@ body {
     content: "";
     position: absolute;
     top: -20px;
-    /* Đẩy lên trên để chạm vào icon */
     right: 0;
     width: 100%;
     height: 20px;
-    /* Chiều cao bằng khoảng cách bạn đẩy xuống */
     background-color: transparent;
-    /* Trong suốt */
     display: block;
 }
 
@@ -217,12 +266,10 @@ user-container .user-dropdown {
     display: none !important;
 }
 
-/* Hiện menu khi hover */
 .user-container:hover .user-dropdown {
     display: flex !important;
 }
 
-/* Từng dòng trong menu */
 .user-dropdown a {
     display: flex;
     align-items: center;
@@ -579,8 +626,6 @@ user-container .user-dropdown {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
 }
-
-/* Button Styles */
 .btn-create {
     width: 100%;
     background-color: #DB4444;
@@ -1645,31 +1690,25 @@ user-container .user-dropdown {
     background-color: #FB1314;
     border: 2px solid #000000;
 }
-
 .color-2 {
     background-color: #DB4444;
 }
-
 .color-3 {
     background-color: #EEFF61;
     border: 2px solid #000000;
 }
-
 .color-4 {
     background-color: #000000;
     border: 2px solid #000000;
 }
-
 .color-5 {
     background-color: #184A48;
     border: 2px solid #000000;
 }
-
 .color-product {
     display: flex;
     gap: 8px;
 }
-
 .new-product {
     position: absolute;
     width: 55px;
@@ -1681,12 +1720,10 @@ user-container .user-dropdown {
     justify-content: center;
     align-items: center;
 }
-
 .box {
 
     background-color: #000000;
 }
-
 .fea-center {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1697,13 +1734,11 @@ user-container .user-dropdown {
     column-gap: 20px;
     row-gap: 20px;
     background: white;
-
     p {
         font-weight: 400;
         font-family: "Poppins";
         font-size: 14px;
     }
-
     h1 {
         font-family: "Inter";
         font-weight: 600;
@@ -1711,7 +1746,6 @@ user-container .user-dropdown {
 
     }
 }
-
 .fea-1 {
     grid-area: header;
     grid-column: 1/3;
@@ -1719,25 +1753,21 @@ user-container .user-dropdown {
     color: white;
     position: relative;
 }
-
 .fea-2 {
     grid-area: header1;
     position: relative;
     color: white;
 }
-
 .fea-3 {
     grid-area: footer;
     color: white;
     position: relative;
 }
-
 .fea-4 {
     grid-area: footer1;
     color: white;
     position: relative;
 }
-
 .fea-title {
     position: absolute;
     display: flex;
@@ -1745,7 +1775,6 @@ user-container .user-dropdown {
     bottom: 0px;
     gap: 16px;
 }
-
 .fea-link {
     color: #fff;
     font-size: 12px;
@@ -1753,12 +1782,10 @@ user-container .user-dropdown {
     text-decoration: underline;
     width: fit-content;
 }
-
 .fea-img {
     display: flex;
 
 }
-
 .bottom {
     display: flex;
     justify-content: center;
@@ -1767,8 +1794,6 @@ user-container .user-dropdown {
     padding: 140px 0;
     width: 100%;
 }
-
-
 .content-11,
 .content-12,
 .content-13 {
@@ -1777,8 +1802,6 @@ user-container .user-dropdown {
     align-items: center;
     text-align: center;
 }
-
-
 .bottom img {
     width: 80px;
     height: 80px;
@@ -1787,11 +1810,9 @@ user-container .user-dropdown {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-
 .bottom img:hover {
     transform: scale(1.15);
 }
-
 .content-text h1 {
     font-size: 20px;
     font-weight: 600;
@@ -1799,14 +1820,104 @@ user-container .user-dropdown {
     color: #000;
     margin-bottom: 8px;
 }
-
 .content-text span {
     font-size: 14px;
     font-weight: 400;
     color: #000;
     display: block;
 }
+@media (max-width: 1024px) {
+    .container {
+        margin: 0 20px;
+        flex-direction: column; 
+    }
+    .menu {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 20px 0;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .banner {
+        margin-left: 0;
+        padding-left: 20px;
+    }
+    .banner-2 {
+        margin: 40px 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "left" "right";
+    }
+    .fea-center {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "header header"
+            "header header"
+            "header1 header1"
+            "footer footer1";
+    }
+}
+@media (max-width: 768px) {
+    .frame727, .frame729, .frame733 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
 
+    .flash-title, .categories-title {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    .countdown .value {
+        font-size: 24px;
+    }
+
+    .product, .best-products, .Explore-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .product-card {
+        min-width: unset;
+        width: 100%;
+    }
+    .menu-categories {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+    .cate-1, .cate-2, .cate-3, .cate-4, .cate-5, .cate-6 {
+        width: 100%;
+    }
+    .banner-2title {
+        font-size: 32px;
+    }
+
+    .banner-time {
+        gap: 10px;
+    }
+    .bottom {
+        flex-direction: column;
+        gap: 40px;
+        padding: 60px 0;
+    }
+}
+@media (max-width: 480px) {
+    .product, .best-products, .Explore-products {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Voucher {
+        font-size: 28px;
+        line-height: 40px;
+        width: 100%;
+    }
+}
 /* wishlist */
 .Wishlist,
 .menu-wish {
@@ -2037,7 +2148,59 @@ user-container .user-dropdown {
     justify-content: space-between;
     margin-bottom: 15px;
 }
+@media (max-width: 1024px) {
+    .Wishlist, .menu-wish {
+        padding: 40px 20px 0 20px;
+    }
+}
 
+@media (max-width: 768px) {
+    .Wishlist, .menu-wish {
+        flex-direction: column; 
+        gap: 20px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .Wishlist P, .menu-wish P {
+        font-size: 18px; 
+    }
+
+    .Wishlist a, .test {
+        width: 100% !important;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .seeall {
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .just-for-you {
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .account-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .account-sidebar {
+        width: 100%;
+    }
+
+    .account-content {
+        padding: 20px;
+    }
+}
 /* Payment Card */
 .payment-card.add-new {
     border: 2px dashed #ccc;
@@ -2141,29 +2304,22 @@ user-container .user-dropdown {
     height: 56px;
     cursor: pointer;
 }
-
-/*CART PRODUCT NAME  */
 .name-cart {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Khung ảnh */
 .cart-img-wrapper {
     position: relative;
     width: 50px;
     height: 39px;
 }
-
-/* Ảnh sản phẩm */
 .pic-cart {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
-/* Nút X */
 .remove-item {
     position: absolute;
     top: -6px;
@@ -2178,14 +2334,11 @@ user-container .user-dropdown {
     align-items: center;
     justify-content: center;
 }
-
-/* Icon bên trong */
 .remove-item img {
     width: 10px;
     height: 10px;
 }
 
-/* Hover cho xịn */
 .remove-item:hover {
     background: #b73737;
 }
@@ -2311,7 +2464,83 @@ user-container .user-dropdown {
     flex-direction: column;
 
 }
+@media (max-width: 1024px) {
+    .total-cart {
+        gap: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .coupon-cart {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .Cart-total {
+        width: 100%;
+        max-width: 470px;
+    }
+}
+@media (max-width: 768px) {
+    .CART {
+        padding: 40px 10px;
+    }
+    .cart-title {
+        display: none; 
+    }
+
+    .cart-product {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border: 1px solid #0000000D;
+        border-radius: 8px;
+        align-items: flex-start;
+        position: relative;
+    }
+    .name-cart {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .cart-product::before {
+        content: "Price & Subtotal:";
+        font-size: 12px;
+        color: rgba(0,0,0,0.5);
+    }
+
+    .cart-button {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .return, .cart-update {
+        width: 100%;
+    }
+
+    .coupon-cart {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .coupon-cart input {
+        width: 100%;
+    }
+
+    .coupon-btn {
+        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .cart-quantity {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .quantity-control {
+        width: 120px;
+    }
+}
 /* details-page */
 
 .Product-detail-page{
@@ -2459,8 +2688,98 @@ user-container .user-dropdown {
     align-items: center;
     gap: 16px;
 }
-/* Checkout */
+@media (max-width: 1024px) {
+    .product-details {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+    }
 
+    .product-img {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+
+    .product-info {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Product-detail-page {
+        padding: 40px 10px;
+    }
+
+    .product-img {
+        min-height: 300px;
+    }
+
+    .product-img1 {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .Colours, .Size {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-detail {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .up-down-button {
+        width: 100%; 
+    }
+
+    .buy-detail button {
+        width: 100%; 
+    }
+
+    .heart-detail {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.btd, .button-up {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.colo {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.colo:hover {
+    transform: scale(1.2); 
+}
+
+.Size button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Size button:hover {
+    background-color: #DB4444;
+    color: white;
+    border-color: #DB4444;
+}
+.code-detail {
+    margin-top: 24px;
+}
+
+.free-deli, .code-sale {
+    padding: 15px;
+}
+
+/* Checkout */
 .checkout-container {
     padding: 80px 1%;
     max-width: 1300px;
@@ -2580,6 +2899,63 @@ user-container .user-dropdown {
 
 }
 }
+@media (max-width: 1100px) {
+    .checkout-center {
+        gap: 50px; 
+        justify-content: center;
+    }
+    .Input {
+        width: 100%; 
+        max-width: 470px;
+    }
+}
+@media (max-width: 768px) {
+    .checkout-container {
+        padding: 40px 15px;
+    }
+
+    .checkout-center {
+        flex-direction: column; 
+        gap: 40px;
+    }
+
+    .checkout-box, .checkout-cart {
+        width: 100%; 
+    }
+    .Input {
+        width: 100%; 
+        max-width: none;
+    }
+
+    .checkout-product, .checkout-total {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .product-infoo {
+        width: 100%; 
+    }
+
+    .Place-order button {
+        width: 100%; 
+    }
+}
+.checkout-product {
+    height: auto; 
+    align-items: center;
+}
+
+.checkout-total hr {
+    width: 100%;
+    border: 0.5px solid rgba(0,0,0,0.1);
+    margin: 16px 0;
+}
+
+.Place-order {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
 /* cart */
 .CART {
     padding: 80px 1%;
@@ -2634,7 +3010,9 @@ user-container .user-dropdown {
         color: white;
     }
 }
+
 /* Contact */
+
 .contact-container {
     display: flex;
     gap: 30px;
@@ -2642,7 +3020,6 @@ user-container .user-dropdown {
     font-family: 'Inter', sans-serif;
 }
 
-/* Sidebar Info */
 .contact-info {
     flex: 1;
     padding: 40px;
@@ -2681,7 +3058,6 @@ hr {
     opacity: 0.3;
 }
 
-/* Form Container */
 .contact-form-container {
     flex: 2.5;
     padding: 40px;
@@ -2725,7 +3101,7 @@ hr {
     background: #E07575;
 }
 .breadcrumb {
-    padding: 40px 5% 20px 5%; /* Căn lề trái phải 5% cho đều với container */
+    padding: 40px 5% 20px 5%; 
     font-size: 14px;
     color: #000000;
     font-family: 'Inter', sans-serif;
@@ -2733,17 +3109,67 @@ hr {
 
 .breadcrumb a {
     text-decoration: none;
-    color: #7D8184; /* Màu xám cho trang chủ */
+    color: #7D8184; 
     transition: 0.3s;
 }
 
 .breadcrumb a:hover {
-    color: #DB4444; /* Hiệu ứng hover màu đỏ thương hiệu */
+    color: #DB4444; 
 }
 
 .breadcrumb span {
     font-weight: 500;
-    color: #000000; /* Màu đen đậm hơn cho trang hiện tại */
+    color: #000000; 
+}
+@media (max-width: 1024px) {
+    .contact-container {
+        gap: 20px;
+        padding: 20px 5%;
+    }
+    
+    .contact-form-container {
+        flex: 2; 
+    }
+}
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; 
+        gap: 30px;
+    }
+
+    .contact-info, .contact-form-container {
+        padding: 30px 20px; 
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-actions {
+        justify-content: center; 
+    }
+
+    .btn-primary {
+        width: 100%; 
+        padding: 16px;
+    }
+
+    .breadcrumb {
+        padding: 20px 5%;
+        text-align: center;
+    }
+}
+@media (max-width: 480px) {
+    .info-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .icon-circle {
+        margin: 0 auto;
+    }
 }
 /* forget */
 :root {
@@ -2776,7 +3202,7 @@ hr {
     font-size: 16px;
 }
 
-/* Kiểu Input gạch chân giống hệt hình ảnh Login */
+
 .input-group {
     margin-bottom: 30px;
     position: relative;
@@ -2785,7 +3211,7 @@ hr {
 .input-group input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #7D8184; /* Màu xám nhẹ */
+    border-bottom: 1px solid #7D8184; 
     padding: 10px 0;
     font-size: 16px;
     outline: none;
@@ -2795,8 +3221,6 @@ hr {
 .input-group input:focus {
     border-bottom: 1px solid var(--primary-red);
 }
-
-/* Nút bấm đặc trưng */
 .btn-primary {
     width: 100%;
     background-color: var(--primary-red);
@@ -2829,6 +3253,42 @@ hr {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 40px 20px;
+        min-height: auto; 
+    }
+
+    .auth-form-box {
+        max-width: 100%;
+    }
+
+    .auth-form-box h2 {
+        font-size: 28px; 
+        text-align: center;
+    }
+
+    .auth-form-box p {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .btn-primary {
+        padding: 14px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form-box h2 {
+        font-size: 24px;
+    }
+    
+    .input-group input {
+        font-size: 14px; 
+    }
+}
+
 /* account */
 
 .container {
@@ -3067,7 +3527,7 @@ hr {
 .content-section.active {
     display: block;
 }
-/* Đảm bảo modal phủ toàn màn hình */
+
 .modal {
     display: none;
     position: fixed;
@@ -3101,4 +3561,72 @@ hr {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
+}
+@media (max-width: 1024px) {
+    .account-wrapper {
+        gap: 40px; 
+    }
+    
+    .account-content {
+        padding: 30px 40px; 
+    }
+}
+@media (max-width: 768px) {
+    .breadcrumb-container {
+        margin: 40px auto 20px auto;
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .account-wrapper {
+        flex-direction: column; 
+        gap: 40px;
+        margin-bottom: 80px;
+    }
+
+    .account-sidebar {
+        width: 100%; 
+    }
+
+    .menu-group ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        padding-left: 20px;
+    }
+    .account-content {
+        padding: 25px 20px; 
+    }
+    .form-row {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .form-actions {
+        flex-direction: column-reverse; 
+        gap: 20px;
+        align-items: stretch; 
+    }
+    .btn-save {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .btn-cancel {
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .menu-group ul {
+        grid-template-columns: 1fr; 
+    }
+    .address-grid, .payment-grid {
+        grid-template-columns: 1fr; 
+    }
+    .modal-content {
+        width: 90%; 
+        margin: 20% auto;
+        padding: 20px;
+    }
 }

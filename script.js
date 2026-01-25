@@ -415,8 +415,7 @@ document.addEventListener("click", (e) => {
 
 function updateWishlistBadge() {
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const badge = document.querySelector(".wishlist-countt"); // badge ở header
-
+  const badge = document.querySelector(".wishlist-countt, .wishlist-count");
   if (badge) badge.textContent = wishlist.length;
 }
 
