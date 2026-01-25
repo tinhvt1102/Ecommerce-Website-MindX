@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-// ===== JUST FOR YOU =====
+//  JUST FOR YOU 
 const jfyContainer = document.querySelector(".jfy-products");
 
 function resolveImgPath(path) {
@@ -80,7 +80,7 @@ function renderJFY() {
 
   let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
 
-  // nếu lỡ trước đó bạn lưu 1 object -> convert về array
+  // nếu  trước đó lưu 1 object thì convert về array
   if (!Array.isArray(jfy)) jfy = [jfy];
 
   if (jfy.length === 0) {
@@ -93,35 +93,38 @@ function renderJFY() {
       const imagePath = resolveImgPath(item.img);
 
       return `
-        <div class="product-card" data-id="${item.id}">
-          <!-- ICON REMOVE giống wishlist -->
-          <div class="action-icons-1">
-            <button class="icon-btn-1 jfy-remove-btn" type="button" title="Remove">
-              <img src="../img/icon-delete.png" alt="Remove">
-            </button>
-          </div>
+  <div class="product-card" data-id="${item.id}">
+    <div class="product-top-1">
 
-          <div class="product-top-1">
-            <div class="picture-1">
-              <img src="${imagePath}" alt="${item.name}">
-            </div>
+      <!-- ICON REMOVE -->
+      <div class="action-icons-1">
+        <button class="icon-btn-1 jfy-remove-btn" type="button" title="Remove">
+          <img src="/img/icon-delete.png" alt="Remove">
+        </button>
+      </div>
 
-            <button class="add-to-cart-1" type="button">
-              <img src="../img/Cart1.png" alt=""> Add To Cart
-            </button>
-          </div>
+      <div class="picture-1">
+        <img src="${imagePath}" alt="${item.name}">
+      </div>
 
-          <div class="content-1">
-            <p class="product-name-1">${item.name}</p>
-            <span class="price-new-1">$${item.price}</span>
-          </div>
-        </div>
-      `;
+      <button class="add-to-cart-1" type="button">
+        <img src="/img/Cart1.png" alt=""> Add To Cart
+      </button>
+
+    </div>
+
+    <div class="content-1">
+      <p class="product-name-1">${item.name}</p>
+      <span class="price-new-1">$${item.price}</span>
+    </div>
+  </div>
+`;
+
     })
     .join("");
 }
 
-// Click remove từng sản phẩm trong JFY (event delegation)
+// remove sản phẩm  JFY 
 jfyContainer?.addEventListener("click", (e) => {
   const btn = e.target.closest(".jfy-remove-btn");
   if (!btn) return;

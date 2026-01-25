@@ -15,6 +15,7 @@
 //         });
 // }
 
+
 // // Khi trang load xong
 function initSearchLogic() {
   const searchInput = document.querySelector(".search-box input");
@@ -26,7 +27,7 @@ function initSearchLogic() {
   const getProducts = () => {
     if (Array.isArray(window.PRODUCTS) && window.PRODUCTS.length) return window.PRODUCTS;
 
-    // fallback: lấy từ DOM nếu trang có product-card
+    //lấy từ DOM nếu trang có product-card
     return [...document.querySelectorAll(".product-card")].map(card => ({
       id: card.dataset.id,
       name: card.dataset.name,
@@ -100,7 +101,7 @@ function initSearchLogic() {
   const matched = searchProducts(keyword, products);
 
   if (!matched.length) {
-    alert("Không tìm thấy sản phẩm");
+    alert("No product found.");
     return;
   }
 
@@ -196,7 +197,10 @@ function initHeaderLogic() {
 document.addEventListener("DOMContentLoaded", () => {
   loadHTML("/reuseable/header.html", "header-placeholder", () => {
     initHeaderLogic();
-    initSearchLogic(); // ✅ quan trọng: phải gọi sau khi header load xong
+    initSearchLogic();
+     updateWishlistBadge();
+     updateCartBadge(); 
+     // ✅ quan trọng: phải gọi sau khi header load xong
   });
 
   loadHTML("/reuseable/footer.html", "footer-placeholder");
@@ -299,17 +303,17 @@ document.addEventListener('DOMContentLoaded', () => {
 function addToJustForYou(product) {
   let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
 
-  // Nếu lỡ trước đó lưu dạng object -> convert sang array
+  // Nếu trước đó lưu dạng object thì convert sang array
   if (!Array.isArray(jfy)) jfy = [jfy];
 
-  // Không cho trùng
+  // Không trùng
   const exists = jfy.some(item => item.id === product.id);
   if (exists) return false;
 
   // Cho sản phẩm mới lên đầu danh sách
   jfy.unshift(product);
 
-  // (tuỳ chọn) giới hạn tối đa 8 sản phẩm
+  // giới hạn tối đa 8 sản phẩm
   // jfy = jfy.slice(0, 8);
 
   localStorage.setItem("justForYou", JSON.stringify(jfy));
@@ -337,8 +341,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const added = addToJustForYou(product);
 
-      if (added) alert("Đã thêm vào Just For You!");
-      else alert("Sản phẩm đã có trong Just For You!");
+      if (added) alert("Added to Just For You!");
+      else alert("The product is already");
     });
   });
 });
@@ -346,9 +350,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // cart
 function normalizeImgPath(img) {
   if (!img) return "";
-  // "./img/xxx.png"  -> "/img/xxx.png"
+  
   if (img.startsWith("./")) return "/" + img.slice(2);
-  // "../img/xxx.png" -> "/img/xxx.png"
+  
   if (img.startsWith("../")) return "/" + img.replace(/^(\.\.\/)+/, "");
   return img;
 }
@@ -376,7 +380,7 @@ function addToCart(product) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
 
-  // (tuỳ chọn) cập nhật badge cart nếu bạn có .cart-count
+  //  cập nhật badge cart nếu bạn có .cart-count
   const cartCountEl = document.querySelector(".cart-count");
   if (cartCountEl) cartCountEl.textContent = cart.reduce((s, i) => s + Number(i.quantity || 1), 0);
 }
@@ -389,7 +393,7 @@ document.addEventListener("click", (e) => {
 
   const id = card.dataset.id;
 
-  // lấy từ PRODUCTS (chuẩn nhất)
+  // lấy từ PRODUCTS 
   const product = (window.PRODUCTS || []).find(p => String(p.id) === String(id)) || {
     id: card.dataset.id,
     name: card.dataset.name,
@@ -405,6 +409,72 @@ document.addEventListener("click", (e) => {
       if (added) alert("Đã thêm vào Cart!");
       else alert("Sản phẩm đã có trong Cart!");
 
-  // ✅ chuyển qua trang cart
-  // window.location.href = "/cart/cart.html"; // hoặc "../cart/cart.html" tùy folder
+  //  chuyển trang cart
+  // window.location.href = "/cart/cart.html"; // 
 });
+
+function updateWishlistBadge() {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const badge = document.querySelector(".wishlist-countt"); // badge ở header
+
+  if (badge) badge.textContent = wishlist.length;
+}
+
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.querySelector(".cart-count");
+  if (!badge) return;
+
+  const totalQty = cart.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
+  badge.textContent = totalQty;
+}
+
+// time //
+document.addEventListener("DOMContentLoaded", () => {
+  const countdown = document.querySelector(".countdown");
+  if (!countdown) return;
+
+  const values = countdown.querySelectorAll(".value");
+  if (values.length < 4) return;
+
+  const [daysEl, hoursEl, minutesEl, secondsEl] = values;
+
+  const KEY = "flashSaleDeadline";
+  const DAY_MS = 24 * 60 * 60 * 1000;
+
+  // tránh load lại sau khi f5
+  let deadline = Number(localStorage.getItem(KEY));
+
+  //  set 24h mới
+  if (!deadline || deadline <= Date.now()) {
+    deadline = Date.now() + DAY_MS;
+    localStorage.setItem(KEY, String(deadline));
+  }
+
+  const pad2 = (n) => String(n).padStart(2, "0");
+
+  function tick() {
+    let diff = deadline - Date.now();
+
+    // reset lại
+    if (diff <= 0) {
+      deadline = Date.now() + DAY_MS;
+      localStorage.setItem(KEY, String(deadline));
+      diff = deadline - Date.now();
+    }
+
+    const days = Math.floor(diff / DAY_MS);
+    const hours = Math.floor((diff % DAY_MS) / (60 * 60 * 1000));
+    const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+
+    daysEl.textContent = pad2(days);
+    hoursEl.textContent = pad2(hours);
+    minutesEl.textContent = pad2(minutes);
+    secondsEl.textContent = pad2(seconds);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+});
+

@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let product = null;
 
-  // 1) lấy từ localStorage
+  // lấy từ localStorage
   try {
     product = JSON.parse(localStorage.getItem("selectedProduct"));
   } catch (e) {
     product = null;
   }
 
-  // 2) fallback theo ?id=... từ PRODUCTS
+  //  fallback theo id từ PRODUCTS
   if ((!product || (idFromUrl && String(product.id) !== String(idFromUrl)))
       && Array.isArray(window.PRODUCTS)) {
     product = window.PRODUCTS.find(p => String(p.id) === String(idFromUrl));
@@ -22,16 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // chuẩn hoá path ảnh cho /detail/detail.html
+  // chuẩn path ảnh cho /detail/detail.html
   const toDetailImgPath = (img) => {
     if (!img) return "";
     let path = String(img).trim();
 
-    // ./img/... -> ../img/...
+    
     if (path.startsWith("./img/")) path = "../img/" + path.slice("./img/".length);
-    // img/... -> ../img/...
+   
     else if (path.startsWith("img/")) path = "../" + path;
-    // /img/... -> ../img/... (an toàn khi detail nằm trong /detail/)
+  
     else if (path.startsWith("/img/")) path = ".." + path;
 
     return encodeURI(path);

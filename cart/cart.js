@@ -105,7 +105,7 @@ document.addEventListener('click', e => {
   cartItem.querySelector('.cart-subtotal p').innerText =
     `$${Number(item.price) * item.quantity}`;
 
-  updateCartTotal(); // ✅
+  updateCartTotal(); // 
 });
 
 
@@ -146,15 +146,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (code === 'Tritinbanhtrai' || code === 'Minhquanbanhton') {
       localStorage.setItem('discount', 30);
-      alert('🎉 Giảm 30% thành công!');
+      alert('30% discount');
     } else {
       localStorage.setItem('discount', 0);
-      alert('❌ Coupon không hợp lệ');
+      alert('Invalid coupon');
     }
 
     updateCartTotal();
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutBtn = document.querySelector(".btn-checkout");
+  if (!checkoutBtn) return;
+
+  checkoutBtn.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("Your cart is empty");
+      return;
+    }
+
+    //Chuyểntrang checkout
+    window.location.href = "/checkout/checkout.html"; 
+   
+  });
+});
+
 
 
 
