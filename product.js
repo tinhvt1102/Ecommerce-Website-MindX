@@ -49,3 +49,5 @@ const PRODUCTS = [
     details: "With this DSLR, both experienced photographers and camera beginners can capture amazing photos and videos. Equipped with a 24.1-megapixel CMOS sensor the size of an APS-C sensor and an optical viewfinder, it delivers a true DSLR shooting experience."
   }
 ];
+window.PRODUCTS = PRODUCTS;
+

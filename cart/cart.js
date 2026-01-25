@@ -77,15 +77,21 @@ function updateCartTotal() {
 
 
 document.addEventListener('click', e => {
-  if (!e.target.closest('.plus') &&
-      !e.target.closest('.minus')) return;
+  const plusBtn = e.target.closest('.plus');
+  const minusBtn = e.target.closest('.minus');
+  if (!plusBtn && !minusBtn) return;
 
   const btn = e.target.closest('button');
   const cartItem = btn.closest('.cart-product');
+  if (!cartItem) return;
+
   const id = cartItem.dataset.id;
 
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const item = cart.find(p => p.id === id);
+  const item = cart.find(p => String(p.id) === String(id));
+  if (!item) return;
+
+  item.quantity = Number(item.quantity) || 1;
 
   if (btn.classList.contains('plus')) {
     item.quantity++;
@@ -95,13 +101,13 @@ document.addEventListener('click', e => {
 
   localStorage.setItem('cart', JSON.stringify(cart));
 
-  // Update UI
   cartItem.querySelector('.qty-input').value = item.quantity;
   cartItem.querySelector('.cart-subtotal p').innerText =
-    `$${item.price * item.quantity}`;
+    `$${Number(item.price) * item.quantity}`;
 
-  updateCartTotal(currentDiscount);
+  updateCartTotal(); // 
 });
+
 
 document.addEventListener('click', (e) => {
   const removeBtn = e.target.closest('.remove-item');
@@ -140,15 +146,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (code === 'Tritinbanhtrai' || code === 'Minhquanbanhton') {
       localStorage.setItem('discount', 30);
-      alert('🎉 Giảm 30% thành công!');
+      alert('30% discount');
     } else {
       localStorage.setItem('discount', 0);
-      alert('❌ Coupon không hợp lệ');
+      alert('Invalid coupon');
     }
 
     updateCartTotal();
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutBtn = document.querySelector(".btn-checkout");
+  if (!checkoutBtn) return;
+
+  checkoutBtn.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("Your cart is empty");
+      return;
+    }
+
+    //Chuyểntrang checkout
+    window.location.href = "/checkout/checkout.html"; 
+   
+  });
+});
+
 
 
 
