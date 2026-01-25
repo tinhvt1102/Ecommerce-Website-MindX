@@ -2565,17 +2565,16 @@ user-container .user-dropdown {
 }
 }
 /* cart */
-/* cart */
 .CART {
     padding: 80px 1%;
     max-width: 1300px;
     margin: 0 auto;
 
 /* 404 */
+}
 
 .eror-container{
-    
-padding: 150px 1%;
+    padding: 150px 1%;
     max-width: 1300px;
     margin: 0 auto;
     display: flex;
@@ -2619,4 +2618,3 @@ padding: 150px 1%;
         color: white;
     }
 }
-
