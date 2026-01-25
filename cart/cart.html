@@ -5,49 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
-    <div class="link-cart">
-        <a href="">Home / </a>
-        <a href=""> Cart</a>
-    </div>
-    <div class="cart-container">
-        <div class="cart-header">
-            <div class="cart-title">
-                <p>Product</p>
-                <p>Price</p>
-                <p>Quantity</p>
-                <p>Subtotal</p>
+    <div id="header-placeholder"> </div>
+    <div class="CART">
+        <div class="link-cart"> <a href="">Home / </a> <a href=""> Cart</a> </div>
+        <div class="Cart-container">
+            <div class="cart-header">
+                <div class="cart-title box-cart">
+                    <p>Product</p>
+                    <p>Price</p>
+                    <p>Quantity</p>
+                    <p>Subtotal</p>
+                </div>
+                <div class="cart-product box-cart">
+                    <div class="name-cart">
+                        <div class="cart-img-wrapper"> <button class="remove-item"> <img src="../img/icon-cancel.png"
+                                    alt="Remove"> </button> <img class="pic-cart" src="../img/g27cq4-500x500 1.png"
+                                alt=""> </div>
+                        <p>LCD Monitor</p>
+                    </div>
+                    <div class="cart-price">
+                        <p>$650</p>
+                    </div>
+                    <div class="cart-quantity">
+                        <div class="quantity-control"> <input type="number" class="qty-input" value="01" readonly>
+                            <div class="button-quantity"> <button class="qty-btn minus"> <img
+                                        src="/img/Drop-Up-Small.png" alt=""> </button> <button class="qty-btn plus">
+                                    <img src="/img/Drop-Down-Small.png" alt=""> </button> </div>
+                        </div>
+                    </div>
+                    <div class="cart-subtotal">
+                        <p>$650</p>
+                    </div>
+                </div>
+                <div class="cart-button"> <button class="return btc"> Return To Shop</button> <button
+                        class="cart-update btc"> Update Cart</button> </div>
             </div>
-            <div class="cart-product">
-                <button>
-                    <img src="/img/icon-cancel.png" alt="">
-                </button>
-                <img src="/img/g27cq4-500x500 1.png" alt="">
-                <p>LCD Monitor</p>
+            <div class="total-cart">
+                <div class="coupon-cart"> <input type="text" placeholder=" Coupon code"> <button
+                        class="coupon-btn">Apply Coupon</button> </div> <!-- card total -->
+                <div class="Cart-total">
+                    <h1>Cart Total</h1>
+                    <div class="cart-subtotal cs">
+                        <p>Subtotal:</p>
+                        <p>$1750</p>
+                    </div>
+                    <div class="line1"> <img src="/img/Line 1.png" alt=""> </div>
+                    <div class="cart-shipping cs">
+                        <p>Shipping:</p>
+                        <p>Free</p>
+                    </div>
+                    <div class="line1"> <img src="/img/Line 1.png" alt=""> </div>
+                    <div class="Total cs">
+                        <p>Total:</p>
+                        <p>$1750</p>
+                    </div>
+                    <div class="button-checkout"> <button>Procees to checkout</button> </div>
+                </div>
             </div>
-            <div class="cart-price">
-                <p>$650</p>
-            </div>
-            <div class="cart-quantity">
-
-            </div>
-            <div class="cart-subtotal">
-                <p>$650</p>
-            </div>
-
-
         </div>
-
-
-
-
-
     </div>
-
-
+    <div id="footer-placeholder"></div>
 </body>
+<script src="/script.js"></script>
+<script src="/cart/cart.js"></script>
 
 </html>

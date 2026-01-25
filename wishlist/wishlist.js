@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const wishlistContainer = document.querySelector(".wishlist-list");
-    
+
 
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist = wishlist.filter(item => item && item.id && item.name && item.img);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
     const countEl = document.querySelector(".wishlist-count");
     countEl.textContent = `Wishlist (${wishlist.length})`;
     if (wishlist.length === 0) {
@@ -11,10 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     wishlistContainer.innerHTML = wishlist.map(item => {
-        const imagePath = item.img.startsWith('./')
-            ? `../${item.img.slice(2)}`
-            : item.img;
-            
+        const imagePath = item.img
+
 
         return `
             <div class="product-card" data-id="${item.id}">
