@@ -287,13 +287,11 @@ user-container .user-dropdown {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Icon bên trong menu */
 .user-dropdown a img {
     width: 24px !important;
     height: 24px !important;
     filter: brightness(0) invert(1);
     margin: 0 !important;
-    /* Xóa margin thừa */
 }
 
 .cart-container,.wishlist-container {
@@ -780,7 +778,6 @@ user-container .user-dropdown {
     text-decoration: underline;
 }
 
-/* Responsive cho Login */
 @media (max-width: 480px) {
     .login-actions {
         flex-direction: column;
@@ -797,7 +794,6 @@ user-container .user-dropdown {
     margin-bottom: 30px;
 }
 
-/* Phần nền xám chứa ảnh */
 [class^="product-top-"] {
     position: relative;
     background-color: #f5f5f5;
@@ -809,7 +805,6 @@ user-container .user-dropdown {
     overflow: hidden;
 }
 
-/* Nút Add to cart cố định ở dưới ảnh */
 [class^="add-to-cart-"] {
     position: absolute;
     bottom: 0;
@@ -830,21 +825,18 @@ user-container .user-dropdown {
     font-family: 'Poppins', sans-serif;
 }
 
-/*/////////////////*/
 
 [class^="product-top-"] {
     position: relative;
     background-color: #f5f5f5;
     border-radius: 4px;
     height: 250px;
-    /* Cố định chiều cao khung ảnh */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-/* Tag -40% chuẩn góc trái trên */
 [class^="sale-tag-"] {
     position: absolute;
     top: 12px;
@@ -857,7 +849,6 @@ user-container .user-dropdown {
     font-weight: 400;
 }
 
-/* Cụm icon góc phải trên xếp dọc */
 [class^="action-icons-"] {
     position: absolute;
     top: 12px;
@@ -865,7 +856,6 @@ user-container .user-dropdown {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* Khoảng cách giữa 2 icon */
     z-index: 10;
 }
 
@@ -884,7 +874,6 @@ user-container .user-dropdown {
 
 [class^="icon-btn-"]:hover {
     background-color: #DB4444;
-    /* Hiệu ứng hover cho icon giống mẫu xịn */
 }
 
 [class^="icon-btn-"] img {
@@ -892,7 +881,6 @@ user-container .user-dropdown {
     height: 20px;
 }
 
-/* Nút Add to cart dính đáy */
 [class^="add-to-cart-"] {
     position: absolute;
     bottom: 0;
@@ -909,7 +897,6 @@ user-container .user-dropdown {
     font-weight: 500;
 }
 
-/* CSS cho nội dung */
 [class^="content-"] {
     padding-top: 16px;
 }
@@ -940,7 +927,6 @@ user-container .user-dropdown {
     font-size: 14px;
 }
 
-/* /////////////////////////////// */
 .menu-categories > div {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -981,19 +967,14 @@ user-container .user-dropdown {
     max-width: 1300px;
     margin: 0 auto;
 }
-
-/* /////////////////////////////// */
-/* Header: Flash Sales + Countdown + Arrows */
 .frame727 {
     display: flex;
     align-items: flex-end;
-    /* Căn lề dưới cho các thành phần */
     gap: 87px;
     margin-bottom: 40px;
     position: relative;
 }
 
-/* Cụm "Today's" và Title */
 .frame625 {
     display: flex;
     align-items: center;
@@ -1013,7 +994,6 @@ user-container .user-dropdown {
     letter-spacing: 4%;
 }
 
-/* Countdown */
 .countdown {
     display: flex;
     align-items: center;
@@ -1042,7 +1022,6 @@ user-container .user-dropdown {
     margin-top: 15px;
 }
 
-/* Nút mũi tên - Đưa sang góc phải */
 .frame726 {
     margin-left: auto;
     display: flex;
@@ -1063,13 +1042,10 @@ user-container .user-dropdown {
 
 .frame726 img:hover {
     opacity: 1;
-    /* Hiện rõ 100% */
     background-color: #DB4444;
-    /* Đổi nền sang đỏ thương hiệu */
 
 }
 
-/* Danh sách sản phẩm */
 .product {
     display: flex;
     gap: 30px;
@@ -1082,7 +1058,6 @@ user-container .user-dropdown {
     display: none;
 }
 
-/* Tinh chỉnh lại Card Sản Phẩm */
 .product-card {
     min-width: 270px;
 }
@@ -1098,7 +1073,6 @@ user-container .user-dropdown {
     overflow: hidden;
 }
 
-/* Nút Add to Cart ẩn đi, chỉ hiện khi hover */
 [class^="add-to-cart-"] {
     position: absolute;
     bottom: 0;
@@ -1109,51 +1083,31 @@ user-container .user-dropdown {
     border: none;
     cursor: pointer;
     opacity: 0;
-    /* Ẩn đi */
     transition: 0.3s;
 }
 
 .product-card:hover [class^="add-to-cart-"] {
     opacity: 1;
-    /* Hiện lên khi hover vào card */
 }
-
-/* Thêm đoạn này vào file CSS của bạn */
 .product.full-grid {
     display: flex;
     flex-wrap: wrap;
-    /* Quan trọng nhất: cho phép xuống dòng */
     overflow-x: visible;
-    /* Tắt cuộn ngang */
     justify-content: flex-start;
-    /* Căn lề trái cho sản phẩm */
     height: auto;
-    /* Mở rộng chiều cao tự động */
 }
-
-/* Đảm bảo card sản phẩm không bị co lại khi dàn hàng */
 .product.full-grid .product-card {
     flex: 0 0 auto;
 }
-
-/* Class này sẽ được JS thêm vào khi bấm nút */
 .product.show-all {
     flex-wrap: wrap;
-    /* Cho phép sản phẩm xuống dòng */
     overflow-x: visible;
-    /* Tắt cuộn ngang */
     justify-content: center;
-    /* Căn giữa các sản phẩm khi hiện ra hết */
     scroll-behavior: auto;
 }
-
-/* Ẩn bớt các nút không cần thiết khi đã hiện tất cả */
 .show-all~.view-product {
     display: none;
-    /* Ẩn nút View All sau khi đã bấm */
 }
-
-/* Nút View All Products */
 .view-product {
     display: flex;
     justify-content: center;
@@ -1182,8 +1136,6 @@ user-container .user-dropdown {
 .view-product button:active {
     transform: translateY(0);
 }
-
-/* Đường line phân cách */
 .line {
     text-align: center;
     margin-top: 60px;

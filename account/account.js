@@ -64,16 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initProfile();
     renderAddresses();
 
-    // --- A. ĐIỀU HƯỚNG SIDEBAR ---
     const links = document.querySelectorAll(".account-sidebar a");
     const sections = document.querySelectorAll(".content-section");
 
     links.forEach(link => {
         link.addEventListener("click", (e) => {
             const text = link.innerText.trim();
-            let targetId = link.getAttribute("data-target"); // Ưu tiên lấy từ data-target
+            let targetId = link.getAttribute("data-target");
 
-            // Fallback nếu không có data-target
             if (!targetId) {
                 if (text === "My Profile") targetId = "my-profile";
                 if (text === "Address Book") targetId = "address-book";
@@ -91,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- B. FORM CẬP NHẬT PROFILE (Không bao gồm mật khẩu) ---
+    // --- B. FORM CẬP NHẬT PROFILE ---
     const profileForm = document.getElementById("edit-profile-form");
     if (profileForm) {
         profileForm.addEventListener("submit", (e) => {

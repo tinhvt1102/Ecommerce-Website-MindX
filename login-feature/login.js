@@ -3,34 +3,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (btnLogin) {
         btnLogin.addEventListener("click", function (e) {
-            e.preventDefault(); // Không cho trang load lại
-
-            // 1. Lấy thông tin người dùng vừa nhập vào form Login
+            e.preventDefault();
             const emailInput = document.getElementById("login-email").value;
             const passInput = document.getElementById("login-pass").value;
-
-            // 2. Lấy dữ liệu đã lưu trong LocalStorage từ bước Signup
             const storedUser = JSON.parse(localStorage.getItem("userAccount"));
-
-            // 3. Kiểm tra logic
             if (!storedUser) {
-                alert("Tài khoản không tồn tại. Vui lòng đăng ký trước!");
+                alert("The account does not exist. Please register first!");
                 window.location.href = "/signup-feature/signup.html";
                 return;
             }
-
             if (emailInput === storedUser.email && passInput === storedUser.password) {
-                // Đăng nhập đúng
-                alert("Đăng nhập thành công! Chào mừng " + storedUser.name + " quay trở lại.");
-                
-                // Lưu trạng thái đã đăng nhập (để Header hiển thị tên bạn chẳng hạn)
+                alert("Login successful! Welcome back "+storedUser.name);
                 localStorage.setItem("isLoggedIn", "true");
-                
-                // Chuyển về trang chủ
                 window.location.href = "/index.html";
             } else {
-                // Đăng nhập sai
-                alert("Email hoặc mật khẩu không đúng. Thử lại nhé!");
+                alert("Incorrect email or password. Please try again!");
             }
         });
     }

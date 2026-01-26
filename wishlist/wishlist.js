@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const wishlistContainer = document.querySelector(".wishlist-list");
-
-
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     wishlist = wishlist.filter(item => item && item.id && item.name && item.img);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -11,11 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
         wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
         return;
     }
-
     wishlistContainer.innerHTML = wishlist.map(item => {
         const imagePath = item.img
-
-
         return `
             <div class="product-card" data-id="${item.id}">
                 
@@ -47,16 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".product-card");
             const id = card.dataset.id;
-
             wishlist = wishlist.filter(item => item.id !== id);
             localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
             card.remove();
             const countEl = document.querySelector(".wishlist-count");
             countEl.textContent = `Wishlist (${wishlist.length})`;
-
-
-            // Nếu xóa hết hiện empty message
             if (wishlist.length === 0) {
                 wishlistContainer.innerHTML = "<p>Wishlist is empty.</p>";
             }
@@ -77,21 +67,15 @@ function resolveImgPath(path) {
 
 function renderJFY() {
   if (!jfyContainer) return;
-
   let jfy = JSON.parse(localStorage.getItem("justForYou")) || [];
-
-  // nếu  trước đó lưu 1 object thì convert về array
   if (!Array.isArray(jfy)) jfy = [jfy];
-
   if (jfy.length === 0) {
     jfyContainer.innerHTML = "<p>Just For You is empty.</p>";
     return;
   }
-
   jfyContainer.innerHTML = jfy
     .map((item) => {
       const imagePath = resolveImgPath(item.img);
-
       return `
   <div class="product-card" data-id="${item.id}">
     <div class="product-top-1">
